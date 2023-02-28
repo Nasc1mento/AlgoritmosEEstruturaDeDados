@@ -3,17 +3,13 @@ package Recursao.Escadinha;
 public class Escada {
 
     private final int tamanho;
-    private final int x;
-    private final int y;
 
     public Escada(int tamanho) {
         this.tamanho = tamanho;
-        this.x = 0;
-        this.y = 0;
     }
 
     public void imprimir_escada() {
-        imprimir_escada(this.x, this.y);
+        imprimir_escada(0, 0);
     }
 
     private void imprimir_escada(int x, int y) {
@@ -26,7 +22,7 @@ public class Escada {
             imprimir_escada(x+1, 0);
         }
 
-        if (x!=y && y == tamanho -1) {
+        if (x!=y && y == tamanho - 1) {
             System.out.println();
         }
 
