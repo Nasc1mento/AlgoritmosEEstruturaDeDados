@@ -14,15 +14,15 @@ public class Escada {
 
     private void imprimir_escada(int x, int y) {
 
-        if (x == tamanho) {return;}
+        if (x == this.tamanho) {return;}
 
-        if (x < tamanho && y < tamanho - 1) {
+        if (y < this.tamanho - 1) {
             imprimir_escada(x, y+1);
         } else {
             imprimir_escada(x+1, 0);
         }
 
-        if (x!=y && y == tamanho - 1) {
+        if (x!=y && y == this.tamanho - 1) {
             System.out.println();
         }
 
