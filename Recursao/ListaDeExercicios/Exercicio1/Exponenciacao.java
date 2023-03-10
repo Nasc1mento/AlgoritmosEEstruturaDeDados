@@ -4,7 +4,11 @@
  * Componente Curricular: Algorítmos e Estrutura de Dados
  * Professor: Milton Secundino
  * Aluno: Adryan Nascimento Reis 
- * Exercício 01 - Implemente uma função recursiva que, dados dois números inteiros x e n, calcula o valor de xn
+ * 
+ * 
+ * 
+ * 
+ * Exercício 01 - Implemente uma função recursiva que, dados dois números inteiros x e n, calcula o valor de x**n
  * 
  * 
  */
@@ -18,11 +22,11 @@ public class Exponenciacao {
 			return x;
 		}
 		
-		return x*expoenenciacao(x, n-1);
+		return x * expoenenciacao(x, n-1);
 	}
 	
 	public static void main(String[] args) {
-		int resposta = expoenenciacao(3, 4);
+		int resposta = expoenenciacao(5, 4);
 		System.out.println(resposta);
 	}
 }
