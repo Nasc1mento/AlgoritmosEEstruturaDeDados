@@ -1,4 +1,4 @@
-package ListaEncadeada;
+package ListaLigada;
 
 public class ListaLigada {
 	private No primeiro;
@@ -70,14 +70,14 @@ public class ListaLigada {
 		return temp;
 	}
 	
-	public No localizar(String conteudo) {
+	public String localizar(String conteudo) {
 		if (Vazia()) {
 			return null;
 		}
 		No aux = primeiro;
 		while (aux != null) {
 			if (aux.getDado() == conteudo) 
-				return aux;			
+				return aux.getDado();			
 			aux = aux.getProximo();
 		}
 		return null;

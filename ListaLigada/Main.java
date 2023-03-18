@@ -9,7 +9,7 @@
  *
  *
  */
-package ListaEncadeada;
+package ListaLigada;
 
 public class Main {
 	
