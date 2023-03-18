@@ -3,11 +3,10 @@ package ListaEncadeada;
 public class ListaLigada {
 	private No primeiro;
 	private No ultimo;
-	private String nomeDaLista;
-
-	public ListaLigada(String nome) {
-		nomeDaLista = nome;
-		primeiro = ultimo = null;
+	
+	public ListaLigada() {
+		primeiro = null;
+		ultimo = null;
 	}
 
 	public void InsereNaFrente(String item) {
@@ -21,7 +20,7 @@ public class ListaLigada {
 		if (Vazia())
 			primeiro = ultimo = new No(item);
 		else {
-			ultimo.setProximo(primeiro);
+			ultimo.setProximo(new No(item));
 			ultimo = ultimo.getProximo();
 		}
 	}
@@ -56,6 +55,35 @@ public class ListaLigada {
 		return item;
 	}
 
+	public String toString() {
+		String temp = "<";
+		if (Vazia()) {
+			temp += "Vazia ";
+			return temp;
+		}
+		No atual = primeiro;
+		while (atual != null) {
+			temp += atual.getDado() + ", ";
+			atual = atual.getProximo();
+		}
+		temp += ">";
+		return temp;
+	}
+	
+	public No localizar(String conteudo) {
+		if (Vazia()) {
+			return null;
+		}
+		No aux = primeiro;
+		while (aux != null) {
+			if (aux.getDado() == conteudo) 
+				return aux;			
+			aux = aux.getProximo();
+		}
+		return null;
+		
+		
+	}
 	public boolean Vazia() {
 		return primeiro == null;
 	}
