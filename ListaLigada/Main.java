@@ -17,11 +17,12 @@ public class Main {
 	
 	public static void main(String[] args) {
 //		Exercício 01
-		ListaLigada lg = new ListaLigada();
+		ListaLigada<Object>lg = new ListaLigada<>();
 		lg.InsereNoFundo("a");
 		lg.InsereNoFundo("b");
 		lg.InsereNoFundo("c");
-		lg.InsereNaFrente("r");	
+		lg.InsereNaFrente("r");
+		lg.InsereNaFrente(5);
 		System.out.println(lg);
 		
 		// Localize/ Pesquise/Encontre (search) elementos

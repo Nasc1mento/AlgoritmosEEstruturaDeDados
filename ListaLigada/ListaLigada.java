@@ -1,35 +1,35 @@
 package ListaLigada;
 
-public class ListaLigada {
-	private No primeiro;
-	private No ultimo;
+public class ListaLigada<T> {
+	private No<T> primeiro;
+	private No<T> ultimo;
 	
 	public ListaLigada() {
 		primeiro = null;
 		ultimo = null;
 	}
 
-	public void InsereNaFrente(String item) {
+	public void InsereNaFrente(T item) {
 		if (Vazia())
-			primeiro = ultimo = new No(item);
+			primeiro = ultimo = new No<>(item);
 		else
-			primeiro = new No(item, primeiro);
+			primeiro = new No<>(item, primeiro);
 	}
 
-	public void InsereNoFundo(String item) {
+	public void InsereNoFundo(T item) {
 		if (Vazia())
-			primeiro = ultimo = new No(item);
+			primeiro = ultimo = new No<>(item);
 		else {
-			ultimo.setProximo(new No(item));
+			ultimo.setProximo(new No<>(item));
 			ultimo = ultimo.getProximo();
 		}
 	}
 
-	public String RemoveDaFrente() {
+	public T RemoveDaFrente() {
 		if (Vazia()) {
 			return null;
 		}
-		String item = primeiro.getDado();
+		T item = primeiro.getDado();
 
 		if (primeiro == ultimo)
 			primeiro = ultimo = null;
@@ -38,15 +38,15 @@ public class ListaLigada {
 		return item;
 	}
 
-	public String RemoveDoFundo() {
+	public T RemoveDoFundo() {
 		if (Vazia()) {
 			return null;
 		}
-		String item = ultimo.getDado();
+		T item = ultimo.getDado();
 		if (primeiro == ultimo)
 			primeiro = ultimo = null;
 		else {
-			No atual = primeiro;
+			No<T> atual = primeiro;
 			while (atual.getProximo() != ultimo)
 				atual = atual.getProximo();
 			ultimo = atual;
@@ -61,7 +61,7 @@ public class ListaLigada {
 			temp += "Vazia ";
 			return temp;
 		}
-		No atual = primeiro;
+		No<T> atual = primeiro;
 		while (atual != null) {
 			temp += atual.getDado() + ", ";
 			atual = atual.getProximo();
@@ -70,11 +70,11 @@ public class ListaLigada {
 		return temp;
 	}
 	
-	public String localizar(String conteudo) {
+	public T localizar(String conteudo) {
 		if (Vazia()) {
 			return null;
 		}
-		No aux = primeiro;
+		No<T> aux = primeiro;
 		while (aux != null) {
 			if (aux.getDado() == conteudo) 
 				return aux.getDado();			

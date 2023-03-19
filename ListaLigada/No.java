@@ -1,29 +1,29 @@
 package ListaLigada;
 
-public class No {
+public class No <T>{
 
-	private String conteudo;
-	private No proximo;
+	private T conteudo;
+	private No<T> proximo;
 
-	public No(String dadonovo) {
+	public No(T dadonovo) {
 		this.conteudo = dadonovo;
 		this.proximo = null;
 	}
 
-	public No(String dadonovo, No ligacao) {
+	public No(T dadonovo, No<T> ligacao) {
 		this.conteudo = dadonovo;
 		this.proximo = ligacao;
 	}
 
-	public No getProximo() {
+	public No<T> getProximo() {
 		return this.proximo;
 	}
 
-	public void setProximo(No proximo) {
-		this.proximo = proximo;
+	public void setProximo(No<T> no) {
+		this.proximo = no;
 	}
 
-	public String getDado() {
+	public T getDado() {
 		return this.conteudo;
 	}
 
