@@ -5,14 +5,14 @@ public class No <T>{
 	private T conteudo;
 	private No<T> proximo;
 
-	public No(T dadonovo) {
-		this.conteudo = dadonovo;
+	public No(T conteudo) {
+		this.conteudo = conteudo;
 		this.proximo = null;
 	}
 
-	public No(T dadonovo, No<T> ligacao) {
-		this.conteudo = dadonovo;
-		this.proximo = ligacao;
+	public No(T conteudo, No<T> proximo) {
+		this.conteudo = conteudo;
+		this.proximo = proximo;
 	}
 
 	public No<T> getProximo() {
@@ -23,7 +23,7 @@ public class No <T>{
 		this.proximo = no;
 	}
 
-	public T getDado() {
+	public T getConteudo() {
 		return this.conteudo;
 	}
 

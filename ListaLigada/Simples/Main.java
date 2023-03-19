@@ -16,7 +16,7 @@ public class Main {
 	
 	
 	public static void main(String[] args) {
-//		Exercício 01
+//Exercício 01
 		ListaLigada<Object>lg = new ListaLigada<>();
 		lg.insereNoFundo("a");
 		lg.insereNoFundo("b");
@@ -33,10 +33,12 @@ public class Main {
 		System.out.println(lg.localizar("d"));
 		System.out.println(lg.localizar("e"));
 		System.out.println(lg.localizar("r"));
-		
-		
+		System.out.println(lg.getIndice("r"));
+		System.out.println(lg.getIndice("a"));
+		System.out.println(lg.getIndice(5));
 		//Dividir uma lista em várias (k)
-		
+		lg.insereNoFundo(lg);
+		System.out.println(lg.getTamanho());
 		
 	}
 }
