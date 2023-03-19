@@ -9,7 +9,7 @@
  *
  *
  */
-package ListaLigada;
+package ListaLigada.Simples;
 
 public class Main {
 	
@@ -18,13 +18,14 @@ public class Main {
 	public static void main(String[] args) {
 //		Exercício 01
 		ListaLigada<Object>lg = new ListaLigada<>();
-		lg.InsereNoFundo("a");
-		lg.InsereNoFundo("b");
-		lg.InsereNoFundo("c");
-		lg.InsereNaFrente("r");
-		lg.InsereNaFrente(5);
+		lg.insereNoFundo("a");
+		lg.insereNoFundo("b");
+		lg.insereNoFundo("c");
+		lg.insereNaFrente("r");
+		lg.insereNaFrente(5);
+		lg.insereNoFundo(2.99);
 		System.out.println(lg);
-		
+		System.out.println(lg.getTamanho());
 		// Localize/ Pesquise/Encontre (search) elementos
 		System.out.println(lg.localizar("a"));
 		System.out.println(lg.localizar("b"));
@@ -32,6 +33,7 @@ public class Main {
 		System.out.println(lg.localizar("d"));
 		System.out.println(lg.localizar("e"));
 		System.out.println(lg.localizar("r"));
+		
 		
 		//Dividir uma lista em várias (k)
 		

@@ -1,4 +1,4 @@
-package ListaLigada;
+package ListaLigada.Simples;
 
 public class ListaLigada<T> {
 	private No<T> primeiro;
@@ -9,15 +9,15 @@ public class ListaLigada<T> {
 		ultimo = null;
 	}
 
-	public void InsereNaFrente(T item) {
-		if (Vazia())
+	public void insereNaFrente(T item) {
+		if (vazia())
 			primeiro = ultimo = new No<>(item);
 		else
 			primeiro = new No<>(item, primeiro);
 	}
 
-	public void InsereNoFundo(T item) {
-		if (Vazia())
+	public void insereNoFundo(T item) {
+		if (vazia())
 			primeiro = ultimo = new No<>(item);
 		else {
 			ultimo.setProximo(new No<>(item));
@@ -25,8 +25,8 @@ public class ListaLigada<T> {
 		}
 	}
 
-	public T RemoveDaFrente() {
-		if (Vazia()) {
+	public T removeDaFrente() {
+		if (vazia()) {
 			return null;
 		}
 		T item = primeiro.getDado();
@@ -38,8 +38,8 @@ public class ListaLigada<T> {
 		return item;
 	}
 
-	public T RemoveDoFundo() {
-		if (Vazia()) {
+	public T removeDoFundo() {
+		if (vazia()) {
 			return null;
 		}
 		T item = ultimo.getDado();
@@ -57,7 +57,7 @@ public class ListaLigada<T> {
 
 	public String toString() {
 		String temp = "<";
-		if (Vazia()) {
+		if (vazia()) {
 			temp += "Vazia ";
 			return temp;
 		}
@@ -70,10 +70,11 @@ public class ListaLigada<T> {
 		return temp;
 	}
 	
-	public T localizar(String conteudo) {
-		if (Vazia()) {
+	public T localizar(T conteudo) {
+		if (vazia()) {
 			return null;
 		}
+		
 		No<T> aux = primeiro;
 		while (aux != null) {
 			if (aux.getDado() == conteudo) 
@@ -81,10 +82,20 @@ public class ListaLigada<T> {
 			aux = aux.getProximo();
 		}
 		return null;
-		
-		
 	}
-	public boolean Vazia() {
+	
+	public int getTamanho() {
+		int contador = 0;
+		
+		No <T> temp = primeiro;
+		while (temp != null) {
+			contador++;
+			temp = temp.getProximo();
+		}		
+		return contador;
+	}
+	
+	public boolean vazia() {
 		return primeiro == null;
 	}
 }

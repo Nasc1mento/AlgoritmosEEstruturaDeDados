@@ -1,4 +1,4 @@
-package ListaLigada;
+package ListaLigada.Simples;
 
 public class No <T>{
 
