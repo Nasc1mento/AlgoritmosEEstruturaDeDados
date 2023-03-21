@@ -26,7 +26,7 @@ public class Main {
 		lg.insereNoFundo(2.99);
 		System.out.println(lg);
 		System.out.println(lg.getTamanho());
-		// Localize/ Pesquise/Encontre (search) elementos
+		// a) Localize/ Pesquise/Encontre (search) elementos
 		System.out.println(lg.localizar("a"));
 		System.out.println(lg.localizar("b"));
 		System.out.println(lg.localizar("c"));
@@ -34,15 +34,21 @@ public class Main {
 		System.out.println(lg.localizar("e"));
 		System.out.println(lg.localizar("r"));
 		System.out.println(lg.getTamanho());		
-		// Concatenar/intercalar (Merge) duas listas
+		// b) Concatenar/intercalar (Merge) duas listas
 		ListaLigada<Object>lg2 = new ListaLigada<>();
 		lg2.insereNaFrente("xyz");
 		lg2.insereNaFrente("abc");
 		lg2.insereNaFrente("catapult dragon");
-		System.out.println(lg2);
+		System.out.println(lg2.listar());
 		System.out.println(lg.concatenar(lg2));;
 		System.out.println(lg2);
-		// Dividir uma lista em várias (k)
+		// c) Dividir uma lista em várias (k)
 		
+		// d) Copiar uma lista
+		ListaLigada<Object> copia = lg.copiar();
+		System.out.println(lg);
+		System.out.println(copia);
+		System.out.println(lg.listar());
+		System.out.println(copia.listar());
 	}
 }

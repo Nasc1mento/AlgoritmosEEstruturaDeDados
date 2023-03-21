@@ -57,7 +57,7 @@ public class ListaLigada<T> {
 		return item;
 	}
 
-	public String toString() {
+	public String listar() {
 		String temp = "<";
 		if (vazia()) {
 			temp += "Vazia ";
@@ -102,6 +102,16 @@ public class ListaLigada<T> {
 		return this;
 	}
 	
+	// Copiar lista
+	public ListaLigada<T> copiar() {
+		No<T> temp = primeiro;
+		ListaLigada<T> outra = new ListaLigada<T>();
+		while (temp != null) {
+			outra.insereNoFundo(temp.getConteudo());
+			temp = temp.getProximo();
+		}
+		return outra;
+	}
 	
 	
 	public boolean vazia() {
