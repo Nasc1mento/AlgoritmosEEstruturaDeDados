@@ -49,8 +49,10 @@ public class ListaLigada<T> {
 			primeiro = ultimo = null;
 		else {
 			No<T> atual = primeiro;
+			
 			while (atual.getProximo() != ultimo)
 				atual = atual.getProximo();
+			
 			ultimo = atual;
 			atual.setProximo(null);
 		}
@@ -86,6 +88,22 @@ public class ListaLigada<T> {
 		return false;
 	}
 	
+	// Localize/ Pesquise/Encontre (search) elementos
+	public No<T> getNoByIndice(int n){
+		if (vazia()) {
+			return null;
+		}
+				
+		int contador = 0;
+		No<T> aux = primeiro;
+		
+		while (contador != n) {		
+			aux = aux.getProximo();
+			contador++;
+		}
+		return aux;
+	}
+	
 	public int getTamanho() {
 		int contador = 0;
 		
@@ -97,7 +115,7 @@ public class ListaLigada<T> {
 		return contador;
 	}
 	// Concatenar/intercalar (Merge) duas listas
-	public ListaLigada<T> concatenar(ListaLigada<T> outra){
+	public ListaLigada<T> concatenar(ListaLigada<T> outra) {
 		ultimo.setProximo(outra.primeiro);
 		return this;
 	}
@@ -113,6 +131,10 @@ public class ListaLigada<T> {
 		return outra;
 	}
 	
+//	public ListaLigada<T> [] divdirListaEmN (int n) {
+//		ListaLigada<T> [] lista = new ListaLigada[n];
+//		return lista;
+//	}
 	
 	public boolean vazia() {
 		return primeiro == null;

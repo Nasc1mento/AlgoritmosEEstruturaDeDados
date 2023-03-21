@@ -50,5 +50,9 @@ public class Main {
 		System.out.println(copia);
 		System.out.println(lg.listar());
 		System.out.println(copia.listar());
+		System.out.println(lg);
+		System.out.println(lg.listar());
+		System.out.println(lg.getNoByIndice(0).getConteudo());
+		System.out.println(lg.divdirListaEmN(0).length);
 	}
 }
