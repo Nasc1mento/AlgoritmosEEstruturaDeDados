@@ -71,19 +71,19 @@ public class ListaLigada<T> {
 		temp += ">";
 		return temp;
 	}
-	
-	public T localizar(T conteudo) {
+	// Localize/ Pesquise/Encontre (search) elementos
+	public boolean localizar(T conteudo) {
 		if (vazia()) {
-			return null;
+			return false;
 		}
 		
 		No<T> aux = primeiro;
 		while (aux != null) {
 			if (aux.getConteudo().equals(conteudo)) 
-				return aux.getConteudo();			
+				return true;			
 			aux = aux.getProximo();
 		}
-		return null;
+		return false;
 	}
 	
 	public int getTamanho() {
@@ -96,20 +96,12 @@ public class ListaLigada<T> {
 		}		
 		return contador;
 	}
-	
-	public int getIndice(T conteudo) {
-		int indice = 0;
-		
-		No<T> temp = primeiro;
-		
-		while (temp != null) {
-			if (temp.getConteudo().equals(conteudo))
-				return indice;
-			temp = temp.getProximo();
-			indice++;
-		}
-		return -1;
+	// Concatenar/intercalar (Merge) duas listas
+	public ListaLigada<T> concatenar(ListaLigada<T> outra){
+		ultimo.setProximo(outra.primeiro);
+		return this;
 	}
+	
 	
 	
 	public boolean vazia() {
