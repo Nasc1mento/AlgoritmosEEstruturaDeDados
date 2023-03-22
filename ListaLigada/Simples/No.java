@@ -1,5 +1,9 @@
 package ListaLigada.Simples;
-
+/**
+* Implantação de Nó para a disciplina de Algorítmos e estrutura de Dados
+* @author Adryan Nascimento Reis
+* 
+*/
 public class No <T>{
 
 	private T content;
