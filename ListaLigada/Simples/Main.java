@@ -27,6 +27,7 @@ public class Main {
 		System.out.println(lg);
 		System.out.println(lg.getTamanho());
 		// a) Localize/ Pesquise/Encontre (search) elementos
+		System.out.println("----------------Localize/ Pesquise/Encontre (search) elementos------------------");
 		System.out.println(lg.localizar("a"));
 		System.out.println(lg.localizar("b"));
 		System.out.println(lg.localizar("c"));
@@ -35,6 +36,7 @@ public class Main {
 		System.out.println(lg.localizar("r"));
 		System.out.println(lg.getTamanho());		
 		// b) Concatenar/intercalar (Merge) duas listas
+		System.out.println("---------------------Concatenar/intercalar (Merge) duas listas-------------------");
 		ListaLigada<Object>lg2 = new ListaLigada<>();
 		lg2.insereNaFrente("xyz");
 		lg2.insereNaFrente("abc");
@@ -43,8 +45,23 @@ public class Main {
 		System.out.println(lg.concatenar(lg2));;
 		System.out.println(lg2);
 		// c) Dividir uma lista em várias (k)
-		
+		System.out.println("----------------------Dividir uma lista em várias (k)----------------------------");
+		ListaLigada<Object> numeros = new ListaLigada<Object>();
+		numeros.insereNoFundo(1);
+		numeros.insereNoFundo(2);
+		numeros.insereNoFundo(3);
+		numeros.insereNoFundo(4);
+		numeros.insereNoFundo(5);
+		ListaLigada<ListaLigada<Object>> dividida = numeros.divdirListaEmN(3);
+		No<ListaLigada<Object>> l1 = dividida.getNoByIndice(0);
+		No<ListaLigada<Object>> l2 = dividida.getNoByIndice(1);
+		No<ListaLigada<Object>> l3 = dividida.getNoByIndice(2);
+		System.out.println(l1.getConteudo().listar());
+		System.out.println(l2.getConteudo().listar());
+		System.out.println(l3.getConteudo().listar());
+		System.out.println(dividida.getTamanho());
 		// d) Copiar uma lista
+		System.out.println("-------------------------Copiar uma lista----------------------------------------");
 		ListaLigada<Object> copia = lg.copiar();
 		System.out.println(lg);
 		System.out.println(copia);
@@ -53,6 +70,7 @@ public class Main {
 		System.out.println(lg);
 		System.out.println(lg.listar());
 		System.out.println(lg.getNoByIndice(0).getConteudo());
-		System.out.println(lg.divdirListaEmN(0).length);
+		
+
 	}
 }
