@@ -5,21 +5,20 @@ public class ListaLigada<T> {
 	private No<T> tail;
 	
 	public ListaLigada() {
-		head = null;
-		tail = null;
+		head = tail = null;
 	}
 
 	public void addFirst(T item) {
 		
-		if (isVoid())
+		if (isEmpty())
 			head = tail = new No<T>(item);
 		else
-			head = new No<>(item, head);
+			head = new No<T>(item, head);
 	}
 
 	public void addLast(T item) {
 		
-		if (isVoid())
+		if (isEmpty())
 			head = tail = new No<T>(item);
 		else {
 			tail.setNext(new No<T>(item));
@@ -29,7 +28,7 @@ public class ListaLigada<T> {
 
 	public T removeFirst() {
 		
-		if (isVoid()) {
+		if (isEmpty()) {
 			return null;
 		}
 		T item = head.getContent();
@@ -43,7 +42,7 @@ public class ListaLigada<T> {
 
 	public T removeLast() {
 		
-		if (isVoid()) {
+		if (isEmpty()) {
 			return null;
 		}
 		
@@ -66,7 +65,7 @@ public class ListaLigada<T> {
 	public String list() {
 		
 		String temp = "<";
-		if (isVoid()) {
+		if (isEmpty()) {
 			temp += "Void ";
 			return temp;
 		}
@@ -80,9 +79,9 @@ public class ListaLigada<T> {
 	}
 	
 	// Localize/ Pesquise/Encontre (search) elementos
-	public boolean exist(T content) {
+	public boolean contains(T content) {
 		
-		if (isVoid()) {
+		if (isEmpty()) {
 			return false;
 		}
 		
@@ -97,7 +96,7 @@ public class ListaLigada<T> {
 	
 	// Localize/ Pesquise/Encontre (search) elementos
 	public T getContentByIndex(int n){
-		if (isVoid()) {
+		if (isEmpty()) {
 			return null;
 		}
 				
@@ -110,9 +109,9 @@ public class ListaLigada<T> {
 		}
 		return temp.getContent();
 	}
-	
+	// Localize/ Pesquise/Encontre (search) elementos
 	public int indexOf(T content) {
-		if (isVoid()) {
+		if (isEmpty()) {
 			return -1;
 		}
 				
@@ -126,6 +125,37 @@ public class ListaLigada<T> {
 			count++;
 		}
 		return -1;
+	}
+	public int indexOf(No<T> node) {
+		if (isEmpty()) {
+			return -1;
+		}
+				
+		int count = 0;
+		No<T> temp = head;
+		
+		while (temp != null) {
+			if (temp==node)
+				return count;
+			temp = temp.getNext();
+			count++;
+		}
+		return -1;
+	}
+	// Localize/ Pesquise/Encontre (search) elementos
+	public No<T> getNodeByIndex(int n){
+		if (isEmpty() || n > length() || n < 0) {
+			return null;
+		}
+				
+		int count = 0;
+		No<T> temp = head;
+		
+		while (count != n) {		
+			temp = temp.getNext();
+			count++;
+		}
+		return temp;
 	}
 	
 	public int length() {
@@ -143,7 +173,11 @@ public class ListaLigada<T> {
 	// Concatenar/intercalar (Merge) duas listas
 	public ListaLigada<T> concat(ListaLigada<T> otherList) {
 		
-		tail.setNext(otherList.head);
+		if (isEmpty()) 
+			head = tail = otherList.head;
+		else
+			tail.setNext(otherList.head);
+		
 		return this;
 	}
 	
@@ -158,11 +192,11 @@ public class ListaLigada<T> {
 		}
 		return otherList;
 	}
-	
+	// Dividir uma lista em várias (k)
 	public ListaLigada<ListaLigada<T>> divideList (int n) {
 		
 		ListaLigada<ListaLigada<T>> lists = new ListaLigada<ListaLigada<T>>();
-		int length = this.length();
+		int length = length();
 		int part = length / n;
 		int remaining = length % n;
 		No<T> temp = head;
@@ -178,8 +212,44 @@ public class ListaLigada<T> {
 		}
 		return lists;
 	}
+	// Escreva uma rotina em Java para trocar os elementos m e n de uma lista
+	public void swapElements(int m, int n) {
+		
+		if(isEmpty() || length() < 2)
+			return;
+		
+		if (m == n)
+            return;
+  
+        No<T> nodeIndexM = getNodeByIndex(m);
+        No<T> nodeIndexN = getNodeByIndex(n);
+        
+        if (nodeIndexM != null && nodeIndexN != null) {
+            T temp = nodeIndexM.getContent();
+            nodeIndexM.setContent(nodeIndexN.getContent());
+            nodeIndexN.setContent(temp);
+        }		
+	}
 	
-	public boolean isVoid() {
+	// Escreva uma rotina em Java para trocar os índices m e n de uma lista
+	public void swapIndexes(int m, int n) {
+//		if(isEmpty() || length() < 2)
+//			return;
+//		
+//		if (m == n)
+//            return;
+//  
+//        No<T> nodeIndexM = getNodeByIndex(m);
+//        No<T> nodeIndexN = getNodeByIndex(n);
+//        
+//        if (nodeIndexM != null && nodeIndexN != null) {
+//            No<T> temp = nodeIndexM;
+//            nodeIndexM = nodeIndexN;
+//            nodeIndexN = temp;
+//        }
+	}
+	
+	public boolean isEmpty() {
 		return head == null;
 	}
 }

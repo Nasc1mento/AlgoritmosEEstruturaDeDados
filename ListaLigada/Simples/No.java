@@ -26,5 +26,9 @@ public class No <T>{
 	public T getContent() {
 		return this.content;
 	}
+	
+	public void setContent(T data) {
+		this.content = data;
+	}
 
 }
