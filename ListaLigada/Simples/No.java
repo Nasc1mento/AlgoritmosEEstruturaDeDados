@@ -2,29 +2,29 @@ package ListaLigada.Simples;
 
 public class No <T>{
 
-	private T conteudo;
-	private No<T> proximo;
+	private T content;
+	private No<T> next;
 
-	public No(T conteudo) {
-		this.conteudo = conteudo;
-		this.proximo = null;
+	public No(T content) {
+		this.content = content;
+		this.next = null;
 	}
 
-	public No(T conteudo, No<T> proximo) {
-		this.conteudo = conteudo;
-		this.proximo = proximo;
+	public No(T content, No<T> next) {
+		this.content = content;
+		this.next = next;
 	}
 
-	public No<T> getProximo() {
-		return this.proximo;
+	public No<T> getNext() {
+		return this.next;
 	}
 
-	public void setProximo(No<T> no) {
-		this.proximo = no;
+	public void setNext(No<T> no) {
+		this.next = no;
 	}
 
-	public T getConteudo() {
-		return this.conteudo;
+	public T getContent() {
+		return this.content;
 	}
 
 }

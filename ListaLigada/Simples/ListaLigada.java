@@ -1,168 +1,168 @@
 package ListaLigada.Simples;
 
 public class ListaLigada<T> {
-	private No<T> primeiro;
-	private No<T> ultimo;
+	private No<T> head;
+	private No<T> tail;
 	
 	public ListaLigada() {
-		primeiro = null;
-		ultimo = null;
+		head = null;
+		tail = null;
 	}
 
-	public void insereNaFrente(T item) {
+	public void addFirst(T item) {
 		
-		if (vazia())
-			primeiro = ultimo = new No<T>(item);
+		if (isVoid())
+			head = tail = new No<T>(item);
 		else
-			primeiro = new No<>(item, primeiro);
+			head = new No<>(item, head);
 	}
 
-	public void insereNoFundo(T item) {
+	public void addLast(T item) {
 		
-		if (vazia())
-			primeiro = ultimo = new No<T>(item);
+		if (isVoid())
+			head = tail = new No<T>(item);
 		else {
-			ultimo.setProximo(new No<T>(item));
-			ultimo = ultimo.getProximo();
+			tail.setNext(new No<T>(item));
+			tail = tail.getNext();
 		}
 	}
 
-	public T removeDaFrente() {
+	public T removeFirst() {
 		
-		if (vazia()) {
+		if (isVoid()) {
 			return null;
 		}
-		T item = primeiro.getConteudo();
+		T item = head.getContent();
 
-		if (primeiro == ultimo)
-			primeiro = ultimo = null;
+		if (head == tail)
+			head = tail = null;
 		else
-			primeiro = primeiro.getProximo();
+			head = head.getNext();
 		return item;
 	}
 
-	public T removeDoFundo() {
+	public T removeLast() {
 		
-		if (vazia()) {
+		if (isVoid()) {
 			return null;
 		}
 		
-		T item = ultimo.getConteudo();
+		T item = tail.getContent();
 		
-		if (primeiro == ultimo)
-			primeiro = ultimo = null;
+		if (head == tail)
+			head = tail = null;
 		else {
-			No<T> atual = primeiro;
+			No<T> atual = head;
 			
-			while (atual.getProximo() != ultimo)
-				atual = atual.getProximo();
+			while (atual.getNext() != tail)
+				atual = atual.getNext();
 			
-			ultimo = atual;
-			atual.setProximo(null);
+			tail = atual;
+			atual.setNext(null);
 		}
 		return item;
 	}
 
-	public String listar() {
+	public String list() {
 		
 		String temp = "<";
-		if (vazia()) {
-			temp += "Vazia ";
+		if (isVoid()) {
+			temp += "Void ";
 			return temp;
 		}
-		No<T> atual = primeiro;
-		while (atual != null) {
-			temp += atual.getConteudo() + ", ";
-			atual = atual.getProximo();
+		No<T> current = head;
+		while (current != null) {
+			temp += current.getContent() + ", ";
+			current = current.getNext();
 		}
 		temp += ">";
 		return temp;
 	}
 	
 	// Localize/ Pesquise/Encontre (search) elementos
-	public boolean localizar(T conteudo) {
+	public boolean exist(T content) {
 		
-		if (vazia()) {
+		if (isVoid()) {
 			return false;
 		}
 		
-		No<T> aux = primeiro;
-		while (aux != null) {
-			if (aux.getConteudo().equals(conteudo)) 
+		No<T> temp = head;
+		while (temp != null) {
+			if (temp.getContent().equals(content)) 
 				return true;			
-			aux = aux.getProximo();
+			temp = temp.getNext();
 		}
 		return false;
 	}
 	
 	// Localize/ Pesquise/Encontre (search) elementos
-	public No<T> getNoByIndice(int n){
-		if (vazia()) {
+	public No<T> getNodeByIndex(int n){
+		if (isVoid()) {
 			return null;
 		}
 				
-		int contador = 0;
-		No<T> aux = primeiro;
+		int count = 0;
+		No<T> temp = head;
 		
-		while (contador != n) {		
-			aux = aux.getProximo();
-			contador++;
+		while (count != n) {		
+			temp = temp.getNext();
+			count++;
 		}
-		return aux;
+		return temp;
 	}
 	
-	public int getTamanho() {
+	public int length() {
 		
-		int contador = 0;
+		int count = 0;
 		
-		No <T> temp = primeiro;
+		No <T> temp = head;
 		while (temp != null) {
-			contador++;
-			temp = temp.getProximo();
+			count++;
+			temp = temp.getNext();
 		}		
-		return contador;
+		return count;
 	}
 	
 	// Concatenar/intercalar (Merge) duas listas
-	public ListaLigada<T> concatenar(ListaLigada<T> outra) {
+	public ListaLigada<T> concat(ListaLigada<T> otherList) {
 		
-		ultimo.setProximo(outra.primeiro);
+		tail.setNext(otherList.head);
 		return this;
 	}
 	
 	// Copiar lista
-	public ListaLigada<T> copiar() {
+	public ListaLigada<T> copy() {
 		
-		No<T> temp = primeiro;
-		ListaLigada<T> outra = new ListaLigada<T>();
+		No<T> temp = head;
+		ListaLigada<T> otherList = new ListaLigada<T>();
 		while (temp != null) {
-			outra.insereNoFundo(temp.getConteudo());
-			temp = temp.getProximo();
+			otherList.addLast(temp.getContent());
+			temp = temp.getNext();
 		}
-		return outra;
+		return otherList;
 	}
 	
-	public ListaLigada<ListaLigada<T>> divdirListaEmN (int n) {
+	public ListaLigada<ListaLigada<T>> divideList (int n) {
 		
-		ListaLigada<ListaLigada<T>> listas = new ListaLigada<ListaLigada<T>>();
-		int tamanho = this.getTamanho();
-		int parte = tamanho / n;
-		int restante = tamanho % n;
-		No<T> temp = primeiro;
+		ListaLigada<ListaLigada<T>> lists = new ListaLigada<ListaLigada<T>>();
+		int length = this.length();
+		int part = length / n;
+		int remaining = length % n;
+		No<T> temp = head;
 		
 		for (int i = 0; i < n; i++ ) {
-			int tamanhoAtual = parte + (i < restante ? 1 : 0);
-			ListaLigada<T> lista = new ListaLigada<T>();
-			for (int j = 0; j < tamanhoAtual; j++) {
-				lista.insereNoFundo(temp.getConteudo());
-				temp = temp.getProximo();
+			int currentLength = part + (i < remaining ? 1 : 0);
+			ListaLigada<T> list = new ListaLigada<T>();
+			for (int j = 0; j < currentLength; j++) {
+				list.addLast(temp.getContent());
+				temp = temp.getNext();
 			}
-			listas.insereNoFundo(lista);
+			lists.addLast(list);
 		}
-		return listas;
+		return lists;
 	}
 	
-	public boolean vazia() {
-		return primeiro == null;
+	public boolean isVoid() {
+		return head == null;
 	}
 }
