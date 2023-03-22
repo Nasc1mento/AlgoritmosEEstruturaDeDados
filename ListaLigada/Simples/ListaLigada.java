@@ -96,7 +96,7 @@ public class ListaLigada<T> {
 	}
 	
 	// Localize/ Pesquise/Encontre (search) elementos
-	public No<T> getNodeByIndex(int n){
+	public T getContentByIndex(int n){
 		if (isVoid()) {
 			return null;
 		}
@@ -108,7 +108,24 @@ public class ListaLigada<T> {
 			temp = temp.getNext();
 			count++;
 		}
-		return temp;
+		return temp.getContent();
+	}
+	
+	public int indexOf(T content) {
+		if (isVoid()) {
+			return -1;
+		}
+				
+		int count = 0;
+		No<T> temp = head;
+		
+		while (temp != null) {
+			if (temp.getContent().equals(content))
+				return count;
+			temp = temp.getNext();
+			count++;
+		}
+		return -1;
 	}
 	
 	public int length() {

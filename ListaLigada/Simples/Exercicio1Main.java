@@ -53,13 +53,15 @@ public class Exercicio1Main {
 		numeros.addLast(4);
 		numeros.addLast(5);
 		ListaLigada<ListaLigada<Object>> dividida = numeros.divideList(3);
-		No<ListaLigada<Object>> l1 = dividida.getNodeByIndex(0);
-		No<ListaLigada<Object>> l2 = dividida.getNodeByIndex(1);
-		No<ListaLigada<Object>> l3 = dividida.getNodeByIndex(2);
-		System.out.println(l1.getContent().list());
-		System.out.println(l2.getContent().list());
-		System.out.println(l3.getContent().list());
+		ListaLigada<Object> l1 = dividida.getContentByIndex(0);
+		ListaLigada<Object> l2 = dividida.getContentByIndex(1);
+		ListaLigada<Object> l3 = dividida.getContentByIndex(2);
+		System.out.println(l1.list());
+		System.out.println(l2.list());
+		System.out.println(l3.list());
 		System.out.println(dividida.length());
+		System.out.println(l1.indexOf(2));
+		System.out.println(l1.indexOf(1));
 		// d) Copiar uma lista
 		System.out.println("-------------------------Copiar uma lista----------------------------------------");
 		ListaLigada<Object> copia = lg.copy();
@@ -69,7 +71,7 @@ public class Exercicio1Main {
 		System.out.println(copia.list());
 		System.out.println(lg);
 		System.out.println(lg.list());
-		System.out.println(lg.getNodeByIndex(0).getContent());
+		System.out.println(lg.getContentByIndex(0));
 		
 
 	}
