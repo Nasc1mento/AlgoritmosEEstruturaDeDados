@@ -1,14 +1,15 @@
 package ListaLigada.Simples;
-/**
-* Implementação de Lista Ligada para a disciplina de Algorítmos e Estrutura de Dados
-* @author Adryan Nascimento Reis
-* 
-*/
+/** Implementação de Lista Ligada para a disciplina de Algorítmos e Estrutura de Dados
+ * 
+ * @author Adryan Nascimento Reis
+ *
+ * @param <T>
+ */
 public class ListaLigada<T> {
 	private No<T> head;
 	private No<T> tail;
 	
-
+	
 	public ListaLigada() {
 		head = tail = null;
 	}
@@ -16,7 +17,7 @@ public class ListaLigada<T> {
 	 * Adiciona item no início da lista. Se a lista estiver vazia, adicionando um elemento,
 	 * o primeiro tanto o último elemento sao iguais, senão, o nó a ser criado terá como
 	 * próximo nó o atual primeiro.
-	 * @param item
+	 * @param
 	 */
 	public void addFirst(T item) {
 
@@ -29,7 +30,7 @@ public class ListaLigada<T> {
 	 * Adiciona item no final da lista. Se a lista estiver vazia, adicionando um elemento,
 	 * o primeiro tanto o último elemento sao iguais, senão, o ultimo nó atual terá como 
 	 * próximo elemento o novo elemento, e esse novo elemento terá um próximo null
-	 * @param item
+	 * @param
 	 */
 	public void addLast(T item) {
 
@@ -44,7 +45,7 @@ public class ListaLigada<T> {
 	 * Se a lista está vazia, retorna null. Se só tem um elemento, tanto o primeiro quanto
 	 * o último será nullo, senão o primeiro a lista será o próximo do atual primeiro, e 
 	 * retorna o contúdo do nó remvido
-	 * @return T
+	 * @return
 	 */
 	public T removeFirst() {
 
@@ -64,7 +65,7 @@ public class ListaLigada<T> {
 	 * o ultimo nó serão null, senão é feito o seguinte: aponta para o primeiro nó da lista
 	 * e itera sobre a lista até o nó antes do último, o ultimo será igual ele e próximo será
 	 * null.
-	 * @return T
+	 * @return
 	 */
 	public T removeLast() {
 
@@ -90,7 +91,7 @@ public class ListaLigada<T> {
 	/**
 	 * Lista os elementos dentro da lista. Se houver um objeto tipo uma outra Lista, essa
 	 * não irá ser listada, mostrando somente o endereço de memória
-	 * @return String
+	 * @return
 	 */
 	public String list() {
 
@@ -109,9 +110,11 @@ public class ListaLigada<T> {
 	}
 
 	/**
-	 * 
+	 * Verifica se um determinado dado está entre os nós. Se a lista está vazia retorna
+	 * false. Casa contrário, a lista é iterada até encontrar o nó com o dado passado, se
+	 * existe retorna true, senão, false.
 	 * @param content
-	 * @return boolean
+	 * @return
 	 */
 	public boolean contains(T content) {
 
@@ -128,7 +131,11 @@ public class ListaLigada<T> {
 		return false;
 	}
 
-	// Localize/ Pesquise/Encontre (search) elementos
+	/**
+	 * 
+	 * @param n
+	 * @return
+	 */
 	public T getContentByIndex(int n) {
 		if (isEmpty()) {
 			return null;
@@ -144,7 +151,11 @@ public class ListaLigada<T> {
 		return temp.getContent();
 	}
 
-	// Localize/ Pesquise/Encontre (search) elementos
+	/**
+	 * 
+	 * @param content
+	 * @return
+	 */
 	public int indexOf(T content) {
 		if (isEmpty()) {
 			return -1;
@@ -161,7 +172,11 @@ public class ListaLigada<T> {
 		}
 		return -1;
 	}
-
+	/**
+	 * 
+	 * @param node
+	 * @return
+	 */
 	public int indexOf(No<T> node) {
 		if (isEmpty()) {
 			return -1;
@@ -179,7 +194,11 @@ public class ListaLigada<T> {
 		return -1;
 	}
 
-	// Localize/ Pesquise/Encontre (search) elementos
+	/**
+	 * 
+	 * @param n
+	 * @return
+	 */
 	public No<T> getNodeByIndex(int n) {
 		if (isEmpty() || n > length() || n < 0) {
 			return null;
@@ -194,7 +213,11 @@ public class ListaLigada<T> {
 		}
 		return temp;
 	}
-
+	
+	/**
+	 * 
+	 * @return
+	 */
 	public int length() {
 
 		int count = 0;
@@ -207,7 +230,11 @@ public class ListaLigada<T> {
 		return count;
 	}
 
-	// Concatenar/intercalar (Merge) duas listas
+	/**
+	 * 
+	 * @param otherList
+	 * @return
+	 */
 	public ListaLigada<T> concat(ListaLigada<T> otherList) {
 
 		if (isEmpty())
@@ -218,7 +245,10 @@ public class ListaLigada<T> {
 		return this;
 	}
 
-	// Copiar lista
+	/**
+	 * 
+	 * @return
+	 */
 	public ListaLigada<T> copy() {
 
 		No<T> temp = head;
@@ -230,7 +260,11 @@ public class ListaLigada<T> {
 		return otherList;
 	}
 
-	// Dividir uma lista em várias (k)
+	/**
+	 * 
+	 * @param n
+	 * @return
+	 */
 	public ListaLigada<ListaLigada<T>> divideList(int n) {
 
 		ListaLigada<ListaLigada<T>> lists = new ListaLigada<ListaLigada<T>>();
@@ -251,7 +285,11 @@ public class ListaLigada<T> {
 		return lists;
 	}
 
-	// Escreva uma rotina em Java para trocar os elementos m e n de uma lista
+	/**
+	 * 
+	 * @param m
+	 * @param n
+	 */
 	public void swapElements(int m, int n) {
 
 		if (isEmpty() || length() < 2)
@@ -270,7 +308,11 @@ public class ListaLigada<T> {
 		}
 	}
 
-	// Escreva uma rotina em Java para trocar os índices m e n de uma lista
+	/**
+	 * 
+	 * @param m
+	 * @param n
+	 */
 	public void swapIndexes(int m, int n) {
 		No<T> antecessorNodeIndexM = getNodeByIndex(m - 1);
 		No<T> antecessorNodeIndexN = getNodeByIndex(n - 1);
@@ -293,13 +335,21 @@ public class ListaLigada<T> {
 		}
 	}
 	
+	/**
+	 * 
+	 * @param l1
+	 * @param i1
+	 * @param l2
+	 * @param i2
+	 * @param len
+	 */
 	public void inssub(ListaLigada<T> l1, int i1, ListaLigada<T> l2, int i2, int len) {
 		
 	}
 	
 	
 	/**
-	 * Verifica se a lista está vazia
+	 * Verifica se a lista está vazia olhando para o primeiro nó da lista
 	 * @return boolean
 	 */
 	public boolean isEmpty() {
