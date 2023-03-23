@@ -1,17 +1,23 @@
 package ListaLigada.Simples;
 /**
 * Implementação de Lista Ligada para a disciplina de Algorítmos e Estrutura de Dados
-* @author Captain America
+* @author Adryan Nascimento Reis
 * 
 */
 public class ListaLigada<T> {
 	private No<T> head;
 	private No<T> tail;
+	
 
 	public ListaLigada() {
 		head = tail = null;
 	}
-
+	/**
+	 * Adiciona item no início da lista. Se a lista estiver vazia, adicionando um elemento,
+	 * o primeiro tanto o último elemento sao iguais, senão, o nó a ser criado terá como
+	 * próximo nó o atual primeiro.
+	 * @param item
+	 */
 	public void addFirst(T item) {
 
 		if (isEmpty())
@@ -19,7 +25,12 @@ public class ListaLigada<T> {
 		else
 			head = new No<T>(item, head);
 	}
-
+	/**
+	 * Adiciona item no final da lista. Se a lista estiver vazia, adicionando um elemento,
+	 * o primeiro tanto o último elemento sao iguais, senão, o ultimo nó atual terá como 
+	 * próximo elemento o novo elemento, e esse novo elemento terá um próximo null
+	 * @param item
+	 */
 	public void addLast(T item) {
 
 		if (isEmpty())
@@ -29,7 +40,12 @@ public class ListaLigada<T> {
 			tail = tail.getNext();
 		}
 	}
-
+	/**
+	 * Se a lista está vazia, retorna null. Se só tem um elemento, tanto o primeiro quanto
+	 * o último será nullo, senão o primeiro a lista será o próximo do atual primeiro, e 
+	 * retorna o contúdo do nó remvido
+	 * @return T
+	 */
 	public T removeFirst() {
 
 		if (isEmpty()) {
@@ -43,7 +59,13 @@ public class ListaLigada<T> {
 			head = head.getNext();
 		return item;
 	}
-
+	/**
+	 * Se a lista está vazia, retorna null. Se há um só elemento, tanto o primeiro quanto
+	 * o ultimo nó serão null, senão é feito o seguinte: aponta para o primeiro nó da lista
+	 * e itera sobre a lista até o nó antes do último, o ultimo será igual ele e próximo será
+	 * null.
+	 * @return T
+	 */
 	public T removeLast() {
 
 		if (isEmpty()) {
@@ -55,17 +77,21 @@ public class ListaLigada<T> {
 		if (head == tail)
 			head = tail = null;
 		else {
-			No<T> atual = head;
+			No<T> temp = head;
 
-			while (atual.getNext() != tail)
-				atual = atual.getNext();
+			while (temp.getNext() != tail)
+				temp = temp.getNext();
 
-			tail = atual;
-			atual.setNext(null);
+			tail = temp;
+			temp.setNext(null);
 		}
 		return item;
 	}
-
+	/**
+	 * Lista os elementos dentro da lista. Se houver um objeto tipo uma outra Lista, essa
+	 * não irá ser listada, mostrando somente o endereço de memória
+	 * @return String
+	 */
 	public String list() {
 
 		String temp = "<";
@@ -82,7 +108,11 @@ public class ListaLigada<T> {
 		return temp;
 	}
 
-	// Localize/ Pesquise/Encontre (search) elementos
+	/**
+	 * 
+	 * @param content
+	 * @return boolean
+	 */
 	public boolean contains(T content) {
 
 		if (isEmpty()) {
@@ -262,7 +292,16 @@ public class ListaLigada<T> {
 			nodeIndexN.setNext(temp);
 		}
 	}
-
+	
+	public void inssub(ListaLigada<T> l1, int i1, ListaLigada<T> l2, int i2, int len) {
+		
+	}
+	
+	
+	/**
+	 * Verifica se a lista está vazia
+	 * @return boolean
+	 */
 	public boolean isEmpty() {
 		return head == null;
 	}
