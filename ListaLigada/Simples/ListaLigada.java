@@ -132,7 +132,8 @@ public class ListaLigada<T> {
 	}
 
 	/**
-	 * 
+	 * Dado um número n, iterar sobre a lista a partir do índice o zero, e quanto chegar em
+	 * n retornar o conteúdo do nó n.
 	 * @param n
 	 * @return
 	 */
@@ -152,7 +153,7 @@ public class ListaLigada<T> {
 	}
 
 	/**
-	 * 
+	 * Retorna o índice do primeiro nó que possui T como conteúdo
 	 * @param content
 	 * @return
 	 */
@@ -173,7 +174,7 @@ public class ListaLigada<T> {
 		return -1;
 	}
 	/**
-	 * 
+	 * Retorna o índice do nó que aponta para o mesmo lugar que paramêtro.
 	 * @param node
 	 * @return
 	 */
@@ -195,7 +196,7 @@ public class ListaLigada<T> {
 	}
 
 	/**
-	 * 
+	 * Retorna o nó no índice especificado
 	 * @param n
 	 * @return
 	 */
@@ -215,7 +216,7 @@ public class ListaLigada<T> {
 	}
 	
 	/**
-	 * 
+	 * Retorna o tamanho da lista
 	 * @return
 	 */
 	public int length() {
@@ -231,7 +232,8 @@ public class ListaLigada<T> {
 	}
 
 	/**
-	 * 
+	 * Concatena a lista com a lista passada como paramêtro, colocando o último nó da
+	 * primeira lista apontar para o primeiro da segunda
 	 * @param otherList
 	 * @return
 	 */
@@ -246,7 +248,7 @@ public class ListaLigada<T> {
 	}
 
 	/**
-	 * 
+	 * Adiciona os mesmos elemento da lista this à uma lista cópia
 	 * @return
 	 */
 	public ListaLigada<T> copy() {
@@ -261,7 +263,10 @@ public class ListaLigada<T> {
 	}
 
 	/**
-	 * 
+	 * Divide a lista em n pedaços. Faz a divisão inteira do tamanho da lista com n,
+	 * depois o resto da divisão (remaining), no laço, se i for menor que remaining,
+	 * adiciono um elemento a mais na parte, senão, adiciono nada. Isso garante com que
+	 * a lista possua tamanho iguais ou semelhantes(pedaços com +1) 
 	 * @param n
 	 * @return
 	 */
@@ -286,7 +291,8 @@ public class ListaLigada<T> {
 	}
 
 	/**
-	 * 
+	 * Cria duas varáveis que apontam para mesmo lugar que os nós dos índices m e n, e faz
+	 * a troca dos elementos desses nós.
 	 * @param m
 	 * @param n
 	 */
@@ -309,7 +315,10 @@ public class ListaLigada<T> {
 	}
 
 	/**
-	 * 
+	 * Cria quatro nós que apontam para os indíces m e n, e seus antecessores. Faz o nó
+	 * antecessor de m apontar n e o nó anteccesor de n apontar para m, mas se m for o
+	 * primeiro índice, n será o primeiro índice, e vice-versa. Após isso, faz o nó m
+	 * apontar para onde n estava apontando, n para onde m estava apontando.
 	 * @param m
 	 * @param n
 	 */
@@ -333,18 +342,6 @@ public class ListaLigada<T> {
 			nodeIndexM.setNext(nodeIndexN.getNext());
 			nodeIndexN.setNext(temp);
 		}
-	}
-	
-	/**
-	 * 
-	 * @param l1
-	 * @param i1
-	 * @param l2
-	 * @param i2
-	 * @param len
-	 */
-	public void inssub(ListaLigada<T> l1, int i1, ListaLigada<T> l2, int i2, int len) {
-		
 	}
 	
 	

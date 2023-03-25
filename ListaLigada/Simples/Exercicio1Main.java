@@ -86,8 +86,6 @@ public class Exercicio1Main {
 		System.out.println("-----Escreva uma rotina em Java para trocar os elementos de índice m e n de uma lista..-----");
 		letras.swapIndexes(1, 2);
 		System.out.println(letras.list());
-		letras.removeLast();
-		System.out.println(letras.list());
 		
 	}
 }
