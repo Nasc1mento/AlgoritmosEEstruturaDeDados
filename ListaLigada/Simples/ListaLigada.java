@@ -344,26 +344,37 @@ public class ListaLigada<T> {
 		}
 	}
 	
-	
+	/**
+	 * A mesma coisa que o swapIndexes, só que swapIndexes(0, menorNumero) e 
+	 * só para números
+	 */
 	public void minorFirst() {
 		if(head == tail || isEmpty()) {
 			return;
 		}
 		
 		No<T> aux = head;
-		No<T> menor = head;
+		No<T> antecessorMinor = null;
+		No<T> minor = head;
 		
-		while(aux != null) {			
-			if ((int)aux.getContent() < (int)menor.getContent()) {
-				menor = aux;
-			}
+		while(aux.getNext() != null) {
+			No<T> temp = aux;
 			aux = aux.getNext();
+			
+			if ((Integer)minor.getContent() > (Integer)aux.getContent()) {
+				antecessorMinor = temp;
+				minor = aux;
+			}
 		}
-		No<T> temp = head.getNext();
-		head.setNext(menor.getNext());
-		
-		
-		
+				
+//		int alvo = indexOf(minor);
+//		swapIndexes(0,alvo);
+		No<T> first = head;
+		head = minor;
+		antecessorMinor.setNext(first);
+		No<T> second = first.getNext();
+		first.setNext(minor.getNext());
+		minor.setNext(second);	
 	}
 	
 	public void reverse() {

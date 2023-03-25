@@ -87,9 +87,12 @@ public class Exercicio1Main {
 		letras.swapIndexes(1, 2);
 		System.out.println(letras.list());
 		System.out.println("-------------------------");
-		letras.reverse();
-		System.out.println(numeros.list());
 		numeros.addLast(-1);
-		System.out.println();
+		numeros.addLast(-10);
+		numeros.addLast(10);
+		numeros.addLast(-11);
+		System.out.println(numeros.list());		
+		numeros.minorFirst();
+		System.out.println(numeros.list());
 	}
 }
