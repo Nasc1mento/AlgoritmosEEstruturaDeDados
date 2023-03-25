@@ -1,16 +1,16 @@
-package ListaLigada.Simples;
+package lista.listaSimplismenteLigada;
 /** Implementação de Lista Ligada para a disciplina de Algorítmos e Estrutura de Dados
  * 
  * @author Adryan Nascimento Reis
  *
  * @param <T>
  */
-public class ListaLigada<T> {
+public class ListaSimplismenteLigada<T> {
 	private No<T> head;
 	private No<T> tail;
 	
 	
-	public ListaLigada() {
+	public ListaSimplismenteLigada() {
 		head = tail = null;
 	}
 	/**
@@ -237,7 +237,7 @@ public class ListaLigada<T> {
 	 * @param otherList
 	 * @return
 	 */
-	public ListaLigada<T> concat(ListaLigada<T> otherList) {
+	public ListaSimplismenteLigada<T> concat(ListaSimplismenteLigada<T> otherList) {
 
 		if (isEmpty())
 			head = tail = otherList.head;
@@ -251,10 +251,10 @@ public class ListaLigada<T> {
 	 * Adiciona os mesmos elemento da lista this à uma lista cópia
 	 * @return
 	 */
-	public ListaLigada<T> copy() {
+	public ListaSimplismenteLigada<T> copy() {
 
 		No<T> temp = head;
-		ListaLigada<T> otherList = new ListaLigada<T>();
+		ListaSimplismenteLigada<T> otherList = new ListaSimplismenteLigada<T>();
 		while (temp != null) {
 			otherList.addLast(temp.getContent());
 			temp = temp.getNext();
@@ -270,9 +270,9 @@ public class ListaLigada<T> {
 	 * @param n
 	 * @return
 	 */
-	public ListaLigada<ListaLigada<T>> divideList(int n) {
+	public ListaSimplismenteLigada<ListaSimplismenteLigada<T>> divideList(int n) {
 
-		ListaLigada<ListaLigada<T>> lists = new ListaLigada<ListaLigada<T>>();
+		ListaSimplismenteLigada<ListaSimplismenteLigada<T>> lists = new ListaSimplismenteLigada<ListaSimplismenteLigada<T>>();
 		int length = length();
 		int part = length / n;
 		int remaining = length % n;
@@ -280,7 +280,7 @@ public class ListaLigada<T> {
 
 		for (int i = 0; i < n; i++) {
 			int currentLength = part + (i < remaining ? 1 : 0);
-			ListaLigada<T> list = new ListaLigada<T>();
+			ListaSimplismenteLigada<T> list = new ListaSimplismenteLigada<T>();
 			for (int j = 0; j < currentLength; j++) {
 				list.addLast(temp.getContent());
 				temp = temp.getNext();
@@ -345,8 +345,7 @@ public class ListaLigada<T> {
 	}
 	
 	/**
-	 * A mesma coisa que o swapIndexes, só que swapIndexes(0, menorNumero) e 
-	 * só para números
+	 * A mesma coisa que o swapIndexes(0, menorNumero), e só para Lista de números inteiros
 	 */
 	public void minorFirst() {
 		if(head == tail || isEmpty()) {
@@ -366,9 +365,7 @@ public class ListaLigada<T> {
 				minor = aux;
 			}
 		}
-				
-//		int alvo = indexOf(minor);
-//		swapIndexes(0,alvo);
+		
 		No<T> first = head;
 		head = minor;
 		antecessorMinor.setNext(first);
@@ -377,8 +374,34 @@ public class ListaLigada<T> {
 		minor.setNext(second);	
 	}
 	
+	/**
+	 *  Começa setando três variável, apontam para o nó aux, o próximo do auxiliar e o
+	 *  anterior. No loop, guardo o endereço do proximo nó do atual, depois o nó atual 
+	 *  terá como próximo o nó anterior,e esse nó anterior vai apontar para o nó atual e
+	 *  o nó atual vai apontar para o próximo pra o loop continuar.
+	 *  É com se tive "criando" uma lista a partir de outra
+	 *  1ª iteração: 1 -> null e 2 -> 3 -> 4 -> null
+	 *  2ª iteração:2 -> 1 -> null e 3 -> 4 -> null
+	 *  3ª iteração:3 -> 2 -> 1 -> null e 4 -> null
+	 *  4ª iteração: 4 -> 3 -> 2 -> 1 -> null e null
+	 *  laço interrompido
+	 *  dizer quem é o primeiro da lista pra não perder a lista: head = 4
+	 *  ficando 4 -> 3-> 2 ->1 -> null
+	 *  
+	 */
 	public void reverse() {
+		No<T> predecessor = null;
+		No<T> successor = null;
+		No<T> aux = head;
 		
+		while(aux != null) {
+			successor = aux.getNext();
+			aux.setNext(predecessor);
+			predecessor = aux;
+			aux = successor;
+		}
+		
+		head = predecessor;		
 	}
 	
 	/**

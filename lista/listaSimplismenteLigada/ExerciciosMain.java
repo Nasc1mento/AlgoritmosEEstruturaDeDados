@@ -1,4 +1,4 @@
-package ListaLigada.Simples;
+package lista.listaSimplismenteLigada;
 /**
  * Instituto Federal de Educação, Ciência e Tecnologia de Pernambuco - Campus Igarassu
  * Componente Curricular: Algorítmos e Estrutura de Dados
@@ -9,13 +9,13 @@ package ListaLigada.Simples;
  *
  *
  */
-public class Exercicio1Main {
+public class ExerciciosMain {
 	
 	
 	
 	public static void main(String[] args) {
 		//Exercício 01
-		ListaLigada<Object>lg = new ListaLigada<Object>();
+		ListaSimplismenteLigada<Object>lg = new ListaSimplismenteLigada<Object>();
 		lg.addLast("a");
 		lg.addLast("b");
 		lg.addLast("c");
@@ -35,7 +35,7 @@ public class Exercicio1Main {
 		System.out.println(lg.length());		
 		// Concatenar/intercalar (Merge) duas listas
 		System.out.println("---------------------Concatenar/intercalar (Merge) duas listas-------------------");
-		ListaLigada<Object>lg2 = new ListaLigada<Object>();
+		ListaSimplismenteLigada<Object>lg2 = new ListaSimplismenteLigada<Object>();
 		lg2.addFirst("xyz");
 		lg2.addFirst("abc");
 		lg2.addFirst("catapult dragon");
@@ -44,16 +44,16 @@ public class Exercicio1Main {
 		System.out.println(lg.list());
 		// Dividir uma lista em várias (k)
 		System.out.println("----------------------Dividir uma lista em várias (k)----------------------------");
-		ListaLigada<Integer> numeros = new ListaLigada<Integer>();
+		ListaSimplismenteLigada<Integer> numeros = new ListaSimplismenteLigada<Integer>();
 		numeros.addLast(1);
 		numeros.addLast(2);
 		numeros.addLast(3);
 		numeros.addLast(4);
 		numeros.addLast(5);
-		ListaLigada<ListaLigada<Integer>> dividida = numeros.divideList(3);
-		ListaLigada<Integer> l1 = dividida.getContentByIndex(0);
-		ListaLigada<Integer> l2 = dividida.getContentByIndex(1);
-		ListaLigada<Integer> l3 = dividida.getContentByIndex(2);
+		ListaSimplismenteLigada<ListaSimplismenteLigada<Integer>> dividida = numeros.divideList(3);
+		ListaSimplismenteLigada<Integer> l1 = dividida.getContentByIndex(0);
+		ListaSimplismenteLigada<Integer> l2 = dividida.getContentByIndex(1);
+		ListaSimplismenteLigada<Integer> l3 = dividida.getContentByIndex(2);
 		System.out.println(dividida.list());
 		System.out.println(l1.list());
 		System.out.println(l2.list());
@@ -63,7 +63,7 @@ public class Exercicio1Main {
 		System.out.println(l1.indexOf(1));		
 		// Copiar uma lista
 		System.out.println("-------------------------Copiar uma lista----------------------------------------");
-		ListaLigada<Object> copia = lg.copy();
+		ListaSimplismenteLigada<Object> copia = lg.copy();
 		System.out.println(lg);
 		System.out.println(copia);
 		System.out.println(lg.list());
@@ -72,7 +72,7 @@ public class Exercicio1Main {
 		System.out.println(lg.list());
 		System.out.println(lg.getContentByIndex(0));
 		System.out.println("-----Escreva uma rotina em Java para trocar os elementos m e n de uma lista.-----");
-		ListaLigada<Character> letras = new ListaLigada<Character>();
+		ListaSimplismenteLigada<Character> letras = new ListaSimplismenteLigada<Character>();
 		letras.addLast('a');
 		letras.addLast('b');
 		letras.addLast('c');
@@ -91,8 +91,12 @@ public class Exercicio1Main {
 		numeros.addLast(-10);
 		numeros.addLast(10);
 		numeros.addLast(-11);
+		numeros.addLast(11);
 		System.out.println(numeros.list());		
 		numeros.minorFirst();
+		System.out.println(numeros.list());
+		System.out.println("--------------------");
+		numeros.reverse();
 		System.out.println(numeros.list());
 	}
 }

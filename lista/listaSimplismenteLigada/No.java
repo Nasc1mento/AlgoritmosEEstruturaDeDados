@@ -1,4 +1,4 @@
-package ListaLigada.Simples;
+package lista.listaSimplismenteLigada;
 /**Implantação de Nó para a disciplina de Algorítmos e estrutura de Dados
  * 
  * @author Adryan Nascimento Reis
