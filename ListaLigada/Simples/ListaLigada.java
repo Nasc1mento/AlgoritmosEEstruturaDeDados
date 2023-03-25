@@ -345,6 +345,31 @@ public class ListaLigada<T> {
 	}
 	
 	
+	public void minorFirst() {
+		if(head == tail || isEmpty()) {
+			return;
+		}
+		
+		No<T> aux = head;
+		No<T> menor = head;
+		
+		while(aux != null) {			
+			if ((int)aux.getContent() < (int)menor.getContent()) {
+				menor = aux;
+			}
+			aux = aux.getNext();
+		}
+		No<T> temp = head.getNext();
+		head.setNext(menor.getNext());
+		
+		
+		
+	}
+	
+	public void reverse() {
+		
+	}
+	
 	/**
 	 * Verifica se a lista está vazia olhando para o primeiro nó da lista
 	 * @return boolean
