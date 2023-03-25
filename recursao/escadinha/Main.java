@@ -1,4 +1,4 @@
-package Recursao.Escadinha;
+package recursao.escadinha;
 
 public class Main {
 

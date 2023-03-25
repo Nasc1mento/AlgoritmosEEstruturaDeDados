@@ -1,4 +1,4 @@
-package Recursao.InverterString;
+package recursao.inverterString;
 
 public class Main {
     public static void main(String[] args) {

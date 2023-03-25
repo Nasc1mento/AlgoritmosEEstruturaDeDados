@@ -21,7 +21,7 @@
  * 
  */
 
-package Recursao.ListaDeExercicios.Exercicio2;
+package recursao.listaDeExercicios.exercicio2;
 
 public class DecimalParaBinario {
 	

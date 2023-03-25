@@ -13,7 +13,7 @@
  * 
  */
 
-package Recursao.ListaDeExercicios.Exercicio1;
+package recursao.listaDeExercicios.exercicio1;
 
 public class Exponenciacao {
 	

@@ -13,7 +13,7 @@
  * 
  * 
  */
-package Recursao.ListaDeExercicios.Exercicio3;
+package recursao.listaDeExercicios.exercicio3;
 
 public class Soma {
 	

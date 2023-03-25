@@ -18,7 +18,7 @@
  * 
  * 
  */
-package Recursao.ListaDeExercicios.Exercicio4;
+package recursao.listaDeExercicios.exercicio4;
 
 public class MaximoDivisorComum {
 	
