@@ -28,22 +28,46 @@ public class DoublyLinkedList <T>{
 		}
 	}
 	
-	public void insertAt(int position, T data) {
+	public T removeFirst() {
 		
 		if (isEmpty())
-			return;
+			return null;
 		
-		int count = 0;
-		MyNode<T> aux = head;
+		T data = head.getData();
 		
-		while(aux != null) {
-			if(count == position) {
-				break;
-			}
-			count++;
-			aux = aux.getnext();
+		if(head == tail)
+			head = tail = null;
+		else
+			head = head.getnext();
+		
+		return data;
+	}
+	
+	public T removeLast() {
+		
+		if (isEmpty()) {
+			return null;
 		}
 		
+		T data = tail.getData();
+		
+		if (head == tail)
+			head = tail = null;
+		else
+			tail.getPrevious().setNext(tail.getnext());
+		return data;
+	}
+	
+	public void insertAt(int position, T data) {
+		
+
+		if (isEmpty()) {
+			head = tail = new MyNode<T>(data);
+			return;
+		}
+		
+		MyNode<T> aux = getNodeByIndex(position);
+			
 		if(aux == head)
 			addFirst(data);
 		else if(aux == tail)
@@ -57,20 +81,37 @@ public class DoublyLinkedList <T>{
 	
 	public T removeAt(int position) {
 		
-		int count = 0;
+		if (isEmpty()) {
+			return null;
+		}
+		
+		MyNode<T> aux = getNodeByIndex(position);
+		
+		if(aux == head)
+			removeFirst();
+		else if(aux == tail)
+			removeLast();
+		else {
+			aux.getPrevious().setNext(aux.getnext());
+			aux.getnext().setPrevious(aux.getPrevious());
+		}
+		return aux.getData();
+	}
+	
+	
+	public MyNode<T> getNodeByIndex (int position) {
+		
 		MyNode<T> aux = head;
+		int count = 0;
 		
 		while(aux != null) {
 			if(count == position) {
-				break;
+				return aux;
 			}
 			count++;
 			aux = aux.getnext();
 		}
-		
-		aux.getPrevious().setNext(aux.getnext());
-		aux.getnext().setPrevious(aux.getPrevious());
-		return aux.getData();
+		return null;
 	}
 	
 	public String list() {

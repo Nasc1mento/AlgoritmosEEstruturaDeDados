@@ -17,5 +17,8 @@ public class ExcercisesMain {
 		System.out.println(l.list());
 		l.removeAt(1);
 		System.out.println(l.list());
+		l.removeLast();
+		l.removeFirst();
+		System.out.println(l.list());
 	}
 }
