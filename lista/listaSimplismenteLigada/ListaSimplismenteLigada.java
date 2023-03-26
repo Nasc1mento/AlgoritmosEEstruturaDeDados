@@ -345,7 +345,8 @@ public class ListaSimplismenteLigada<T> {
 	}
 	
 	/**
-	 * A mesma coisa que o swapIndexes(0, menorNumero), e só para Lista de números inteiros
+	 * A mesma coisa que o swapIndexes(0, menorNumero), e só para 
+	 * Lista de números inteiros
 	 */
 	public void minorFirst() {
 		if(head == tail || isEmpty()) {
@@ -375,7 +376,7 @@ public class ListaSimplismenteLigada<T> {
 	}
 	
 	/**
-	 *  Começa setando três variável, apontam para o nó aux, o próximo do auxiliar e o
+	 *  Começa setando três variável, apontam para o primeiro(aux), o próximo do auxiliar e o
 	 *  anterior. No loop, guardo o endereço do proximo nó do atual, depois o nó atual 
 	 *  terá como próximo o nó anterior,e esse nó anterior vai apontar para o nó atual e
 	 *  o nó atual vai apontar para o próximo pra o loop continuar.
@@ -386,7 +387,7 @@ public class ListaSimplismenteLigada<T> {
 	 *  4ª iteração: 4 -> 3 -> 2 -> 1 -> null e null
 	 *  laço interrompido
 	 *  dizer quem é o primeiro da lista pra não perder a lista: head = 4
-	 *  ficando 4 -> 3-> 2 ->1 -> null
+	 *  ficando 4 -> 3-> 2 -> 1 -> null
 	 *  
 	 */
 	public void reverse() {
@@ -406,7 +407,7 @@ public class ListaSimplismenteLigada<T> {
 	
 	/**
 	 * Verifica se a lista está vazia olhando para o primeiro nó da lista
-	 * @return boolean
+	 * @return
 	 */
 	public boolean isEmpty() {
 		return head == null;

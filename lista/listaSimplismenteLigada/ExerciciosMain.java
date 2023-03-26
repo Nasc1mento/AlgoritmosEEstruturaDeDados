@@ -86,7 +86,7 @@ public class ExerciciosMain {
 		System.out.println("-----Escreva uma rotina em Java para trocar os elementos de índice m e n de uma lista..-----");
 		letras.swapIndexes(1, 2);
 		System.out.println(letras.list());
-		System.out.println("-------------------------");
+		System.out.println("-----------Menor número no inicio da lista usando os ponteiros--------------");
 		numeros.addLast(-1);
 		numeros.addLast(-10);
 		numeros.addLast(10);
@@ -95,7 +95,7 @@ public class ExerciciosMain {
 		System.out.println(numeros.list());		
 		numeros.minorFirst();
 		System.out.println(numeros.list());
-		System.out.println("--------------------");
+		System.out.println("---------Inverter uma lista usando os ponteiros-----------");
 		numeros.reverse();
 		System.out.println(numeros.list());
 	}
