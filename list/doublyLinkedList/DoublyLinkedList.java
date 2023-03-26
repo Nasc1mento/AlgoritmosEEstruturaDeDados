@@ -27,6 +27,23 @@ public class DoublyLinkedList <T>{
 			tail = tail.getnext();
 		}
 	}
+	
+	public void insertAt(int position, T data) {
+		int count = 0;
+		MyNode<T> aux = head;
+		
+		while(aux != null) {
+			if(count == position) {
+				break;
+			}
+			count++;
+			aux = aux.getnext();
+		}
+		MyNode<T> node = new MyNode<T>(aux.getPrevious(),aux,data);
+		aux.getPrevious().setNext(node);
+		aux.getnext().setPrevious(node);
+	}
+	
 	public String list() {
 		String temp = "<";
 		if (isEmpty()) {

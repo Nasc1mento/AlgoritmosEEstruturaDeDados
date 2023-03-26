@@ -9,5 +9,7 @@ public class ExcercisesMain {
 		l.addFirst(7);
 		l.addLast(8);
 		System.out.println(l.list());
+		l.insertAt(2, 8);
+		System.out.println(l.list());
 	}
 }
