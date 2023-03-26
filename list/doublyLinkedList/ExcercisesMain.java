@@ -40,7 +40,10 @@ public class ExcercisesMain {
 		l2.addLast(80);
 		l2.removeLast();
 		l2.removeAt(4);
+		l2.removeLast();
+		l.removeLast();
 		l.concat(l2);
+	
 		System.out.println(l2.list());
 		System.out.println(l.list());
 	}

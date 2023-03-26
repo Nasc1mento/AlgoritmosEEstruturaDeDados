@@ -60,9 +60,7 @@ public class DoublyLinkedList <T>{
 	}
 	
 	/**
-	 * Remove o último nó da lista, se a lista possui mais de um nó, a cauda será igual
-	 * ao nó antes dele, e o que era a cauda o Garbage Collector vai remover da
-	 * memória (Eu acho, verificar a veracidade disso depois)
+	 * Remove o último nó da lista
 	 * @return
 	 */
 	public T removeLast() {
@@ -75,13 +73,15 @@ public class DoublyLinkedList <T>{
 		
 		if (head == tail)
 			head = tail = null;
-		else 
+		else {
+			tail.getPrevious().setNext(tail.getnext());
 			tail = tail.getPrevious();
+		}
 		return data;
 	}
 	
 	/**
-	 * Insere o nó na posicção especificada
+	 * Insere o nó na posição especificada
 	 * @param position
 	 * @param data
 	 */
@@ -149,13 +149,13 @@ public class DoublyLinkedList <T>{
 	}
 	
 	/**
-	 * Itera a lista e imprime o valores dentro de um <>, se estiver vazia imprime Empty
+	 * Printa lista
 	 * @return
 	 */
 	public String list() {
 		String temp = "<";
 		if (isEmpty()) {
-			temp += "Empty ";
+			temp += "Void ";
 			return temp;
 		}
 		Node<T> current = head;
