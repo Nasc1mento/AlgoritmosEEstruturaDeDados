@@ -1,20 +1,20 @@
-package lista.listaSimplismenteLigada;
+package list.simplyLinkedList;
 /**Implantação de Nó para a disciplina de Algorítmos e estrutura de Dados
  * 
  * @author Adryan Nascimento Reis
  *
  * @param <T>
  */
-public class No <T>{
+public class MyNode <T>{
 	
 	private T content;
-	private No<T> next;
+	private MyNode<T> next;
 	
 	/**
 	 * Construtor utilizado para adicionar o novo nó no fim da lista
 	 * @param content
 	 */
-	public No(T content) {
+	public MyNode(T content) {
 		this.content = content;
 		this.next = null;
 	}
@@ -24,16 +24,16 @@ public class No <T>{
 	 * @param content
 	 * @param next
 	 */
-	public No(T content, No<T> next) {
+	public MyNode(T content, MyNode<T> next) {
 		this.content = content;
 		this.next = next;
 	}
 
-	public No<T> getNext() {
+	public MyNode<T> getNext() {
 		return this.next;
 	}
 
-	public void setNext(No<T> no) {
+	public void setNext(MyNode<T> no) {
 		this.next = no;
 	}
 

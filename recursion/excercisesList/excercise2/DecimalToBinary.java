@@ -21,9 +21,9 @@
  * 
  */
 
-package recursao.listaDeExercicios.exercicio2;
+package recursion.excercisesList.excercise2;
 
-public class DecimalParaBinario {
+public class DecimalToBinary {
 	
 	
 	public static void decToBin(int n) {

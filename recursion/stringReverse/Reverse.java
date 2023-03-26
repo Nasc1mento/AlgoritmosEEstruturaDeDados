@@ -1,11 +1,11 @@
-package recursao.inverterString;
+package recursion.stringReverse;
 
-public class Inverter {
+public class Reverse {
 
     public String texto;
 
 
-    public Inverter (String texto) {
+    public Reverse (String texto) {
         this.texto = texto;
     }
 

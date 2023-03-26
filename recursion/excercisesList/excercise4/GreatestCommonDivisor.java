@@ -18,21 +18,21 @@
  * 
  * 
  */
-package recursao.listaDeExercicios.exercicio4;
+package recursion.excercisesList.excercise4;
 
-public class MaximoDivisorComum {
+public class GreatestCommonDivisor {
 	
 	
-	public static int mdc(int x, int y) {
+	public static int gcd(int x, int y) {
 		if (y > x)
-			return mdc(y, x);
+			return gcd(y, x);
 		else if (x == y)
 			return x;
 		else 
-			return mdc(x-y, y);	
+			return gcd(x-y, y);	
 	}
 	
 	public static void main(String[] args) {
-		System.out.println(mdc(10, 6));
+		System.out.println(gcd(10, 6));
 	}
 }

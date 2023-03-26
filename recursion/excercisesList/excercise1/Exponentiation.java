@@ -13,21 +13,21 @@
  * 
  */
 
-package recursao.listaDeExercicios.exercicio1;
+package recursion.excercisesList.excercise1;
 
-public class Exponenciacao {
+public class Exponentiation {
 	
-	public static int expoenenciacao(int x, int n) {
+	public static int exponentation(int x, int n) {
 		if (n <= 1) {
 			return x;
 		}
 		
-		return x * expoenenciacao(x, n-1);
+		return x * exponentation(x, n-1);
 	}
 	
 	public static void main(String[] args) {
-		int resposta = expoenenciacao(5, 4);
-		System.out.println(resposta);
+		int res = exponentation(5, 4);
+		System.out.println(res);
 	}
 }
 

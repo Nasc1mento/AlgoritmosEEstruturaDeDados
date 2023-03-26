@@ -1,16 +1,16 @@
-package lista.listaSimplismenteLigada;
+package list.simplyLinkedList;
 /** Implementação de Lista Ligada para a disciplina de Algorítmos e Estrutura de Dados
  * 
  * @author Adryan Nascimento Reis
  *
  * @param <T>
  */
-public class ListaSimplismenteLigada<T> {
-	private No<T> head;
-	private No<T> tail;
+public class SimplyLinkedList<T> {
+	private MyNode<T> head;
+	private MyNode<T> tail;
 	
 	
-	public ListaSimplismenteLigada() {
+	public SimplyLinkedList() {
 		head = tail = null;
 	}
 	/**
@@ -22,9 +22,9 @@ public class ListaSimplismenteLigada<T> {
 	public void addFirst(T item) {
 
 		if (isEmpty())
-			head = tail = new No<T>(item);
+			head = tail = new MyNode<T>(item);
 		else
-			head = new No<T>(item, head);
+			head = new MyNode<T>(item, head);
 	}
 	/**
 	 * Adiciona item no final da lista. Se a lista estiver vazia, adicionando um elemento,
@@ -35,9 +35,9 @@ public class ListaSimplismenteLigada<T> {
 	public void addLast(T item) {
 
 		if (isEmpty())
-			head = tail = new No<T>(item);
+			head = tail = new MyNode<T>(item);
 		else {
-			tail.setNext(new No<T>(item));
+			tail.setNext(new MyNode<T>(item));
 			tail = tail.getNext();
 		}
 	}
@@ -78,7 +78,7 @@ public class ListaSimplismenteLigada<T> {
 		if (head == tail)
 			head = tail = null;
 		else {
-			No<T> temp = head;
+			MyNode<T> temp = head;
 
 			while (temp.getNext() != tail)
 				temp = temp.getNext();
@@ -100,7 +100,7 @@ public class ListaSimplismenteLigada<T> {
 			temp += "Void ";
 			return temp;
 		}
-		No<T> current = head;
+		MyNode<T> current = head;
 		while (current != null) {
 			temp += current.getContent() + ", ";
 			current = current.getNext();
@@ -122,7 +122,7 @@ public class ListaSimplismenteLigada<T> {
 			return false;
 		}
 
-		No<T> temp = head;
+		MyNode<T> temp = head;
 		while (temp != null) {
 			if (temp.getContent().equals(content))
 				return true;
@@ -143,7 +143,7 @@ public class ListaSimplismenteLigada<T> {
 		}
 
 		int count = 0;
-		No<T> temp = head;
+		MyNode<T> temp = head;
 
 		while (count != n) {
 			temp = temp.getNext();
@@ -163,7 +163,7 @@ public class ListaSimplismenteLigada<T> {
 		}
 
 		int count = 0;
-		No<T> temp = head;
+		MyNode<T> temp = head;
 
 		while (temp != null) {
 			if (temp.getContent().equals(content))
@@ -178,13 +178,13 @@ public class ListaSimplismenteLigada<T> {
 	 * @param node
 	 * @return
 	 */
-	public int indexOf(No<T> node) {
+	public int indexOf(MyNode<T> node) {
 		if (isEmpty()) {
 			return -1;
 		}
 
 		int count = 0;
-		No<T> temp = head;
+		MyNode<T> temp = head;
 
 		while (temp != null) {
 			if (temp == node)
@@ -200,13 +200,13 @@ public class ListaSimplismenteLigada<T> {
 	 * @param n
 	 * @return
 	 */
-	public No<T> getNodeByIndex(int n) {
+	public MyNode<T> getNodeByIndex(int n) {
 		if (isEmpty() || n > length() || n < 0) {
 			return null;
 		}
 
 		int count = 0;
-		No<T> temp = head;
+		MyNode<T> temp = head;
 
 		while (count != n) {
 			temp = temp.getNext();
@@ -223,7 +223,7 @@ public class ListaSimplismenteLigada<T> {
 
 		int count = 0;
 
-		No<T> temp = head;
+		MyNode<T> temp = head;
 		while (temp != null) {
 			count++;
 			temp = temp.getNext();
@@ -237,7 +237,7 @@ public class ListaSimplismenteLigada<T> {
 	 * @param otherList
 	 * @return
 	 */
-	public ListaSimplismenteLigada<T> concat(ListaSimplismenteLigada<T> otherList) {
+	public SimplyLinkedList<T> concat(SimplyLinkedList<T> otherList) {
 
 		if (isEmpty())
 			head = tail = otherList.head;
@@ -251,10 +251,10 @@ public class ListaSimplismenteLigada<T> {
 	 * Adiciona os mesmos elemento da lista this à uma lista cópia
 	 * @return
 	 */
-	public ListaSimplismenteLigada<T> copy() {
+	public SimplyLinkedList<T> copy() {
 
-		No<T> temp = head;
-		ListaSimplismenteLigada<T> otherList = new ListaSimplismenteLigada<T>();
+		MyNode<T> temp = head;
+		SimplyLinkedList<T> otherList = new SimplyLinkedList<T>();
 		while (temp != null) {
 			otherList.addLast(temp.getContent());
 			temp = temp.getNext();
@@ -270,17 +270,17 @@ public class ListaSimplismenteLigada<T> {
 	 * @param n
 	 * @return
 	 */
-	public ListaSimplismenteLigada<ListaSimplismenteLigada<T>> divideList(int n) {
+	public SimplyLinkedList<SimplyLinkedList<T>> divideList(int n) {
 
-		ListaSimplismenteLigada<ListaSimplismenteLigada<T>> lists = new ListaSimplismenteLigada<ListaSimplismenteLigada<T>>();
+		SimplyLinkedList<SimplyLinkedList<T>> lists = new SimplyLinkedList<SimplyLinkedList<T>>();
 		int length = length();
 		int part = length / n;
 		int remaining = length % n;
-		No<T> temp = head;
+		MyNode<T> temp = head;
 
 		for (int i = 0; i < n; i++) {
 			int currentLength = part + (i < remaining ? 1 : 0);
-			ListaSimplismenteLigada<T> list = new ListaSimplismenteLigada<T>();
+			SimplyLinkedList<T> list = new SimplyLinkedList<T>();
 			for (int j = 0; j < currentLength; j++) {
 				list.addLast(temp.getContent());
 				temp = temp.getNext();
@@ -304,8 +304,8 @@ public class ListaSimplismenteLigada<T> {
 		if (m == n)
 			return;
 
-		No<T> nodeIndexM = getNodeByIndex(m);
-		No<T> nodeIndexN = getNodeByIndex(n);
+		MyNode<T> nodeIndexM = getNodeByIndex(m);
+		MyNode<T> nodeIndexN = getNodeByIndex(n);
 
 		if (nodeIndexM != null && nodeIndexN != null) {
 			T temp = nodeIndexM.getContent();
@@ -323,10 +323,10 @@ public class ListaSimplismenteLigada<T> {
 	 * @param n
 	 */
 	public void swapIndexes(int m, int n) {
-		No<T> antecessorNodeIndexM = getNodeByIndex(m - 1);
-		No<T> antecessorNodeIndexN = getNodeByIndex(n - 1);
-		No<T> nodeIndexM = getNodeByIndex(m);
-		No<T> nodeIndexN = getNodeByIndex(n);
+		MyNode<T> antecessorNodeIndexM = getNodeByIndex(m - 1);
+		MyNode<T> antecessorNodeIndexN = getNodeByIndex(n - 1);
+		MyNode<T> nodeIndexM = getNodeByIndex(m);
+		MyNode<T> nodeIndexN = getNodeByIndex(n);
 
 		if (nodeIndexM != null && nodeIndexN != null) {
 			if (antecessorNodeIndexM != null)
@@ -338,7 +338,7 @@ public class ListaSimplismenteLigada<T> {
 			else
 				head = nodeIndexM;
 			
-			No<T> temp = nodeIndexM.getNext();
+			MyNode<T> temp = nodeIndexM.getNext();
 			nodeIndexM.setNext(nodeIndexN.getNext());
 			nodeIndexN.setNext(temp);
 		}
@@ -353,12 +353,12 @@ public class ListaSimplismenteLigada<T> {
 			return;
 		}
 		
-		No<T> aux = head;
-		No<T> antecessorMinor = null;
-		No<T> minor = head;
+		MyNode<T> aux = head;
+		MyNode<T> antecessorMinor = null;
+		MyNode<T> minor = head;
 		
 		while(aux.getNext() != null) {
-			No<T> temp = aux;
+			MyNode<T> temp = aux;
 			aux = aux.getNext();
 			
 			if ((Integer)minor.getContent() > (Integer)aux.getContent()) {
@@ -367,10 +367,10 @@ public class ListaSimplismenteLigada<T> {
 			}
 		}
 		
-		No<T> first = head;
+		MyNode<T> first = head;
 		head = minor;
 		antecessorMinor.setNext(first);
-		No<T> second = first.getNext();
+		MyNode<T> second = first.getNext();
 		first.setNext(minor.getNext());
 		minor.setNext(second);	
 	}
@@ -391,9 +391,9 @@ public class ListaSimplismenteLigada<T> {
 	 *  
 	 */
 	public void reverse() {
-		No<T> predecessor = null;
-		No<T> successor = null;
-		No<T> aux = head;
+		MyNode<T> predecessor = null;
+		MyNode<T> successor = null;
+		MyNode<T> aux = head;
 		
 		while(aux != null) {
 			successor = aux.getNext();

@@ -13,9 +13,9 @@
  * 
  * 
  */
-package recursao.listaDeExercicios.exercicio3;
+package recursion.excercisesList.excercise3;
 
-public class Soma {
+public class Sum {
 	
 	public static int sucessor(int n) {
 		return ++n;		
@@ -25,14 +25,14 @@ public class Soma {
 		return --n;		
 	}
 	
-	public static int soma(int x, int y) {
+	public static int sum(int x, int y) {
 		if (y != 0) {
-			return soma(sucessor(x), predecessor(y));
+			return sum(sucessor(x), predecessor(y));
 		}	
 		return x;
 	}
 	
 	public static void main(String[] args) {
-		System.out.println(soma(202,202));
+		System.out.println(sum(202,202));
 	}
 }
