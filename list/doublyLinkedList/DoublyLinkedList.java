@@ -15,7 +15,11 @@ public class DoublyLinkedList <T>{
 		head = tail = null;
 	}
 	
-	
+	/**
+	 * Cria um nó no início da lista, se a lista possui mais de um nó, o nó criado
+	 * terá como próximo o atual primeiro.
+	 * @param data
+	 */
 	public void addFirst(T data) {
 		if(isEmpty())
 			head = tail = new Node<T>(data);
@@ -23,6 +27,11 @@ public class DoublyLinkedList <T>{
 			head = new Node<T>(null, head, data);		
 	}
 	
+	/**
+	 * Cria um nó no fima da lista, se a lista possui mais de um nó, esse nó a ser 
+	 * criado terá como predecessor o atual ultimo, e depois o mesmo será a cauda
+	 * @param data
+	 */
 	public void addLast(T data) {
 		if(isEmpty())
 			head = tail = new Node<T>(data);
@@ -32,6 +41,10 @@ public class DoublyLinkedList <T>{
 		}
 	}
 	
+	/**
+	 * Remove o primeiro nó da lista, se a lista possui mais de um elemento, o prime
+	 * @return
+	 */
 	public T removeFirst() {
 		
 		if (isEmpty())
@@ -46,6 +59,12 @@ public class DoublyLinkedList <T>{
 		return data;
 	}
 	
+	/**
+	 * Remove o último nó da lista, se a lista possui mais de um nó, a cauda será igual
+	 * ao nó antes dele, e o que era a cauda o Garbage Collector vai remover da
+	 * memória (Eu acho, verificar a veracidade disso depois)
+	 * @return
+	 */
 	public T removeLast() {
 		
 		if (isEmpty()) {
@@ -56,13 +75,16 @@ public class DoublyLinkedList <T>{
 		
 		if (head == tail)
 			head = tail = null;
-		else {
-			tail.getPrevious().setNext(tail.getnext());
+		else 
 			tail = tail.getPrevious();
-		}
 		return data;
 	}
 	
+	/**
+	 * Insere o nó na posicção especificada
+	 * @param position
+	 * @param data
+	 */
 	public void insertAt(int position, T data) {
 		
 		if (isEmpty()) {
@@ -82,7 +104,11 @@ public class DoublyLinkedList <T>{
 			aux.getPrevious().setNext(node);
 		}
 	}
-	
+	/**
+	 * Remove o nó na posição especificada
+	 * @param position
+	 * @return
+	 */
 	public T removeAt(int position) {
 		
 		if (isEmpty()) {
@@ -102,7 +128,11 @@ public class DoublyLinkedList <T>{
 		return aux.getData();
 	}
 	
-	
+	/**
+	 * Itera sobre a lista até a posição especificada e retorna o nó
+	 * @param position
+	 * @return
+	 */
 	public Node<T> getNodeByIndex (int position) {
 		
 		Node<T> aux = head;
@@ -118,10 +148,14 @@ public class DoublyLinkedList <T>{
 		return null;
 	}
 	
+	/**
+	 * Itera a lista e imprime o valores dentro de um <>, se estiver vazia imprime Empty
+	 * @return
+	 */
 	public String list() {
 		String temp = "<";
 		if (isEmpty()) {
-			temp += "Void ";
+			temp += "Empty ";
 			return temp;
 		}
 		Node<T> current = head;
@@ -132,7 +166,12 @@ public class DoublyLinkedList <T>{
 		temp += ">";
 		return temp;
 	}
-
+	
+	/**
+	 * Concatena duas listas interligando a cauda com a cabeça da outra
+	 * @param list
+	 * @return
+	 */
 	public DoublyLinkedList<T> concat(DoublyLinkedList<T> list){
 		if(isEmpty())
 			head = tail = list.head;
@@ -142,7 +181,10 @@ public class DoublyLinkedList <T>{
 		}
 		return this;
 	}
-	
+	/**
+	 * Verfica se a lista está vazia
+	 * @return
+	 */
 	public boolean isEmpty() {
 		return this.head == null;
 	}

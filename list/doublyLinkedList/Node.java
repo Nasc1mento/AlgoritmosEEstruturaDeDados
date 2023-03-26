@@ -13,13 +13,21 @@ public class Node <T> {
 	private T data;
 	
 	
-	
+	/**
+	 * Construtor feito para a criação de nós à lista vazia
+	 * @param data
+	 */
 	public Node(T data){
 		this.previous = null;
 		this.next = null;
 		this.data = data;
 	}
-	
+	/**
+	 * Construtor feito para criação de nós no início e fim da lista
+	 * @param previous
+	 * @param next
+	 * @param data
+	 */
 	public Node(Node<T> previous, Node<T> next, T data) {
 		this.previous = previous;
 		this.next = next;
