@@ -49,10 +49,28 @@ public class DoublyLinkedList <T>{
 		else if(aux == tail)
 			addLast(data);
 		else {
-			MyNode<T> node = new MyNode<T>(aux, aux.getnext(), data);
+			MyNode<T> node = new MyNode<T>(aux.getPrevious(), aux, data);
 			aux.getnext().setPrevious(node);
 			aux.getPrevious().setNext(node);
 		}
+	}
+	
+	public T removeAt(int position) {
+		
+		int count = 0;
+		MyNode<T> aux = head;
+		
+		while(aux != null) {
+			if(count == position) {
+				break;
+			}
+			count++;
+			aux = aux.getnext();
+		}
+		
+		aux.getPrevious().setNext(aux.getnext());
+		aux.getnext().setPrevious(aux.getPrevious());
+		return aux.getData();
 	}
 	
 	public String list() {
