@@ -29,6 +29,10 @@ public class DoublyLinkedList <T>{
 	}
 	
 	public void insertAt(int position, T data) {
+		
+		if (isEmpty())
+			return;
+		
 		int count = 0;
 		MyNode<T> aux = head;
 		
@@ -39,9 +43,16 @@ public class DoublyLinkedList <T>{
 			count++;
 			aux = aux.getnext();
 		}
-		MyNode<T> node = new MyNode<T>(aux.getPrevious(),aux,data);
-		aux.getPrevious().setNext(node);
-		aux.getnext().setPrevious(node);
+		
+		if(aux == head)
+			addFirst(data);
+		else if(aux == tail)
+			addLast(data);
+		else {
+			MyNode<T> node = new MyNode<T>(aux, aux.getnext(), data);
+			aux.getnext().setPrevious(node);
+			aux.getPrevious().setNext(node);
+		}
 	}
 	
 	public String list() {
