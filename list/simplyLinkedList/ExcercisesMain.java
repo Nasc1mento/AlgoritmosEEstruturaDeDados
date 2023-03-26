@@ -1,11 +1,10 @@
 package list.simplyLinkedList;
-/**
- * Instituto Federal de Educação, Ciência e Tecnologia de Pernambuco - Campus Igarassu
+/**Instituto Federal de Educação, Ciência e Tecnologia de Pernambuco - Campus Igarassu
  * Componente Curricular: Algorítmos e Estrutura de Dados
  * Professor: Milton Secundino
  * @author Adryan Nascimento Reis 
  * 
- *<pre>Exercicio sobre Lista Ligada Simples</pre>
+ *Exercicio sobre Lista Simplesmente Ligada
  *
  *
  */

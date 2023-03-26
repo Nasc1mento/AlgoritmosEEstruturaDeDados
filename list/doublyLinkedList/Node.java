@@ -1,5 +1,11 @@
 package list.doublyLinkedList;
-
+/**Implementação de Nó de Lista Duplamente Ligada para a disciplina de Algorítmos e 
+ * Estrutura de Dados
+ * 
+ * @author Adryan Nascimento Reis
+ *
+ * @param <T>
+ */
 public class Node <T> {
 	
 	private Node<T> previous;

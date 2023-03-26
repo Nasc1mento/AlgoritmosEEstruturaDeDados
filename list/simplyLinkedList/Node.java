@@ -1,5 +1,6 @@
 package list.simplyLinkedList;
-/**Implantação de Nó para a disciplina de Algorítmos e estrutura de Dados
+/**Implementação de Nó de Lista Simplismente Ligada para a disciplina de Algorítmos 
+ * e estrutura de Dados
  * 
  * @author Adryan Nascimento Reis
  *

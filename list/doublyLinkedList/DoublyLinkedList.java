@@ -1,7 +1,11 @@
 package list.doublyLinkedList;
-
-
-
+/**Implementação de umaLista duplamente ligada feita para a disciplina de 
+ * Algorítmos e Estrutura de Dados
+ * 
+ * @author Adryan Nascimento Reis
+ *
+ * @param <T>
+ */
 public class DoublyLinkedList <T>{
 	
 	private Node<T> head;
@@ -39,7 +43,6 @@ public class DoublyLinkedList <T>{
 			head = tail = null;
 		else
 			head = head.getnext();
-		
 		return data;
 	}
 	
@@ -53,14 +56,15 @@ public class DoublyLinkedList <T>{
 		
 		if (head == tail)
 			head = tail = null;
-		else
+		else {
 			tail.getPrevious().setNext(tail.getnext());
+			tail = tail.getPrevious();
+		}
 		return data;
 	}
 	
 	public void insertAt(int position, T data) {
 		
-
 		if (isEmpty()) {
 			head = tail = new Node<T>(data);
 			return;
@@ -129,7 +133,15 @@ public class DoublyLinkedList <T>{
 		return temp;
 	}
 
-	
+	public DoublyLinkedList<T> concat(DoublyLinkedList<T> list){
+		if(isEmpty())
+			head = tail = list.head;
+		else {
+			tail.setNext(list.head);
+			list.head.setPrevious(tail);
+		}
+		return this;
+	}
 	
 	public boolean isEmpty() {
 		return this.head == null;
