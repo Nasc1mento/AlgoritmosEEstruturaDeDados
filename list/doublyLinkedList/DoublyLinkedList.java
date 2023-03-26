@@ -60,7 +60,10 @@ public class DoublyLinkedList <T>{
 	}
 	
 	/**
-	 * Remove o último nó da lista
+	 * Remove o último nó da lista. Caso a lista possua mais de um elemento, 
+	 * o penúltimo elemento será p último e irá apontar para null, o antigo último da 
+	 * lista será removido da memória pelo garbage collector, pois deixará de ser
+	 * referenciado
 	 * @return
 	 */
 	public T removeLast() {
