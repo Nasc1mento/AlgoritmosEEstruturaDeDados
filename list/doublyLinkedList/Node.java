@@ -1,38 +1,38 @@
 package list.doublyLinkedList;
 
-public class MyNode <T> {
+public class Node <T> {
 	
-	private MyNode<T> previous;
-	private MyNode<T> next;
+	private Node<T> previous;
+	private Node<T> next;
 	private T data;
 	
 	
 	
-	public MyNode(T data){
+	public Node(T data){
 		this.previous = null;
 		this.next = null;
 		this.data = data;
 	}
 	
-	public MyNode(MyNode<T> previous, MyNode<T> next, T data) {
+	public Node(Node<T> previous, Node<T> next, T data) {
 		this.previous = previous;
 		this.next = next;
 		this.data = data;
 	}
 	
-	public void setNext(MyNode<T> next){
+	public void setNext(Node<T> next){
 		this.next = next;
 	}
 	
-	public MyNode<T> getnext(){
+	public Node<T> getnext(){
 		return this.next;
 	}
 	
-	public void setPrevious(MyNode<T> previous) {
+	public void setPrevious(Node<T> previous) {
 		this.previous = previous;
 	}
 	
-	public MyNode<T> getPrevious() {
+	public Node<T> getPrevious() {
 		return this.previous;
 	}
 	

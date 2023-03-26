@@ -6,8 +6,8 @@ package list.simplyLinkedList;
  * @param <T>
  */
 public class SimplyLinkedList<T> {
-	private MyNode<T> head;
-	private MyNode<T> tail;
+	private Node<T> head;
+	private Node<T> tail;
 	
 	
 	public SimplyLinkedList() {
@@ -22,9 +22,9 @@ public class SimplyLinkedList<T> {
 	public void addFirst(T item) {
 
 		if (isEmpty())
-			head = tail = new MyNode<T>(item);
+			head = tail = new Node<T>(item);
 		else
-			head = new MyNode<T>(item, head);
+			head = new Node<T>(item, head);
 	}
 	/**
 	 * Adiciona item no final da lista. Se a lista estiver vazia, adicionando um elemento,
@@ -35,9 +35,9 @@ public class SimplyLinkedList<T> {
 	public void addLast(T item) {
 
 		if (isEmpty())
-			head = tail = new MyNode<T>(item);
+			head = tail = new Node<T>(item);
 		else {
-			tail.setNext(new MyNode<T>(item));
+			tail.setNext(new Node<T>(item));
 			tail = tail.getNext();
 		}
 	}
@@ -78,7 +78,7 @@ public class SimplyLinkedList<T> {
 		if (head == tail)
 			head = tail = null;
 		else {
-			MyNode<T> temp = head;
+			Node<T> temp = head;
 
 			while (temp.getNext() != tail)
 				temp = temp.getNext();
@@ -100,7 +100,7 @@ public class SimplyLinkedList<T> {
 			temp += "Void ";
 			return temp;
 		}
-		MyNode<T> current = head;
+		Node<T> current = head;
 		while (current != null) {
 			temp += current.getContent() + ", ";
 			current = current.getNext();
@@ -122,7 +122,7 @@ public class SimplyLinkedList<T> {
 			return false;
 		}
 
-		MyNode<T> temp = head;
+		Node<T> temp = head;
 		while (temp != null) {
 			if (temp.getContent().equals(content))
 				return true;
@@ -143,7 +143,7 @@ public class SimplyLinkedList<T> {
 		}
 
 		int count = 0;
-		MyNode<T> temp = head;
+		Node<T> temp = head;
 
 		while (count != n) {
 			temp = temp.getNext();
@@ -163,7 +163,7 @@ public class SimplyLinkedList<T> {
 		}
 
 		int count = 0;
-		MyNode<T> temp = head;
+		Node<T> temp = head;
 
 		while (temp != null) {
 			if (temp.getContent().equals(content))
@@ -178,13 +178,13 @@ public class SimplyLinkedList<T> {
 	 * @param node
 	 * @return
 	 */
-	public int indexOf(MyNode<T> node) {
+	public int indexOf(Node<T> node) {
 		if (isEmpty()) {
 			return -1;
 		}
 
 		int count = 0;
-		MyNode<T> temp = head;
+		Node<T> temp = head;
 
 		while (temp != null) {
 			if (temp == node)
@@ -200,13 +200,13 @@ public class SimplyLinkedList<T> {
 	 * @param n
 	 * @return
 	 */
-	public MyNode<T> getNodeByIndex(int n) {
+	public Node<T> getNodeByIndex(int n) {
 		if (isEmpty() || n > length() || n < 0) {
 			return null;
 		}
 
 		int count = 0;
-		MyNode<T> temp = head;
+		Node<T> temp = head;
 
 		while (count != n) {
 			temp = temp.getNext();
@@ -223,7 +223,7 @@ public class SimplyLinkedList<T> {
 
 		int count = 0;
 
-		MyNode<T> temp = head;
+		Node<T> temp = head;
 		while (temp != null) {
 			count++;
 			temp = temp.getNext();
@@ -253,7 +253,7 @@ public class SimplyLinkedList<T> {
 	 */
 	public SimplyLinkedList<T> copy() {
 
-		MyNode<T> temp = head;
+		Node<T> temp = head;
 		SimplyLinkedList<T> otherList = new SimplyLinkedList<T>();
 		while (temp != null) {
 			otherList.addLast(temp.getContent());
@@ -276,7 +276,7 @@ public class SimplyLinkedList<T> {
 		int length = length();
 		int part = length / n;
 		int remaining = length % n;
-		MyNode<T> temp = head;
+		Node<T> temp = head;
 
 		for (int i = 0; i < n; i++) {
 			int currentLength = part + (i < remaining ? 1 : 0);
@@ -304,8 +304,8 @@ public class SimplyLinkedList<T> {
 		if (m == n)
 			return;
 
-		MyNode<T> nodeIndexM = getNodeByIndex(m);
-		MyNode<T> nodeIndexN = getNodeByIndex(n);
+		Node<T> nodeIndexM = getNodeByIndex(m);
+		Node<T> nodeIndexN = getNodeByIndex(n);
 
 		if (nodeIndexM != null && nodeIndexN != null) {
 			T temp = nodeIndexM.getContent();
@@ -323,10 +323,10 @@ public class SimplyLinkedList<T> {
 	 * @param n
 	 */
 	public void swapIndexes(int m, int n) {
-		MyNode<T> antecessorNodeIndexM = getNodeByIndex(m - 1);
-		MyNode<T> antecessorNodeIndexN = getNodeByIndex(n - 1);
-		MyNode<T> nodeIndexM = getNodeByIndex(m);
-		MyNode<T> nodeIndexN = getNodeByIndex(n);
+		Node<T> antecessorNodeIndexM = getNodeByIndex(m - 1);
+		Node<T> antecessorNodeIndexN = getNodeByIndex(n - 1);
+		Node<T> nodeIndexM = getNodeByIndex(m);
+		Node<T> nodeIndexN = getNodeByIndex(n);
 
 		if (nodeIndexM != null && nodeIndexN != null) {
 			if (antecessorNodeIndexM != null)
@@ -338,7 +338,7 @@ public class SimplyLinkedList<T> {
 			else
 				head = nodeIndexM;
 			
-			MyNode<T> temp = nodeIndexM.getNext();
+			Node<T> temp = nodeIndexM.getNext();
 			nodeIndexM.setNext(nodeIndexN.getNext());
 			nodeIndexN.setNext(temp);
 		}
@@ -353,12 +353,12 @@ public class SimplyLinkedList<T> {
 			return;
 		}
 		
-		MyNode<T> aux = head;
-		MyNode<T> antecessorMinor = null;
-		MyNode<T> minor = head;
+		Node<T> aux = head;
+		Node<T> antecessorMinor = null;
+		Node<T> minor = head;
 		
 		while(aux.getNext() != null) {
-			MyNode<T> temp = aux;
+			Node<T> temp = aux;
 			aux = aux.getNext();
 			
 			if ((Integer)minor.getContent() > (Integer)aux.getContent()) {
@@ -367,10 +367,10 @@ public class SimplyLinkedList<T> {
 			}
 		}
 		
-		MyNode<T> first = head;
+		Node<T> first = head;
 		head = minor;
 		antecessorMinor.setNext(first);
-		MyNode<T> second = first.getNext();
+		Node<T> second = first.getNext();
 		first.setNext(minor.getNext());
 		minor.setNext(second);	
 	}
@@ -391,9 +391,9 @@ public class SimplyLinkedList<T> {
 	 *  
 	 */
 	public void reverse() {
-		MyNode<T> predecessor = null;
-		MyNode<T> successor = null;
-		MyNode<T> aux = head;
+		Node<T> predecessor = null;
+		Node<T> successor = null;
+		Node<T> aux = head;
 		
 		while(aux != null) {
 			successor = aux.getNext();

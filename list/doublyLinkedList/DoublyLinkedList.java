@@ -4,8 +4,8 @@ package list.doublyLinkedList;
 
 public class DoublyLinkedList <T>{
 	
-	private MyNode<T> head;
-	private MyNode<T> tail;
+	private Node<T> head;
+	private Node<T> tail;
 	
 	public DoublyLinkedList() {
 		head = tail = null;
@@ -14,16 +14,16 @@ public class DoublyLinkedList <T>{
 	
 	public void addFirst(T data) {
 		if(isEmpty())
-			head = tail = new MyNode<T>(data);
+			head = tail = new Node<T>(data);
 		else 
-			head = new MyNode<T>(null, head, data);		
+			head = new Node<T>(null, head, data);		
 	}
 	
 	public void addLast(T data) {
 		if(isEmpty())
-			head = tail = new MyNode<T>(data);
+			head = tail = new Node<T>(data);
 		else {
-			tail.setNext(new MyNode<T>(tail,null,data));
+			tail.setNext(new Node<T>(tail,null,data));
 			tail = tail.getnext();
 		}
 	}
@@ -62,18 +62,18 @@ public class DoublyLinkedList <T>{
 		
 
 		if (isEmpty()) {
-			head = tail = new MyNode<T>(data);
+			head = tail = new Node<T>(data);
 			return;
 		}
 		
-		MyNode<T> aux = getNodeByIndex(position);
+		Node<T> aux = getNodeByIndex(position);
 			
 		if(aux == head)
 			addFirst(data);
 		else if(aux == tail)
 			addLast(data);
 		else {
-			MyNode<T> node = new MyNode<T>(aux.getPrevious(), aux, data);
+			Node<T> node = new Node<T>(aux.getPrevious(), aux, data);
 			aux.getnext().setPrevious(node);
 			aux.getPrevious().setNext(node);
 		}
@@ -85,7 +85,7 @@ public class DoublyLinkedList <T>{
 			return null;
 		}
 		
-		MyNode<T> aux = getNodeByIndex(position);
+		Node<T> aux = getNodeByIndex(position);
 		
 		if(aux == head)
 			removeFirst();
@@ -99,9 +99,9 @@ public class DoublyLinkedList <T>{
 	}
 	
 	
-	public MyNode<T> getNodeByIndex (int position) {
+	public Node<T> getNodeByIndex (int position) {
 		
-		MyNode<T> aux = head;
+		Node<T> aux = head;
 		int count = 0;
 		
 		while(aux != null) {
@@ -120,7 +120,7 @@ public class DoublyLinkedList <T>{
 			temp += "Void ";
 			return temp;
 		}
-		MyNode<T> current = head;
+		Node<T> current = head;
 		while (current != null) {
 			temp += current.getData() + ", ";
 			current = current.getnext();

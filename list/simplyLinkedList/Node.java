@@ -5,16 +5,16 @@ package list.simplyLinkedList;
  *
  * @param <T>
  */
-public class MyNode <T>{
+public class Node <T>{
 	
 	private T content;
-	private MyNode<T> next;
+	private Node<T> next;
 	
 	/**
 	 * Construtor utilizado para adicionar o novo nó no fim da lista
 	 * @param content
 	 */
-	public MyNode(T content) {
+	public Node(T content) {
 		this.content = content;
 		this.next = null;
 	}
@@ -24,16 +24,16 @@ public class MyNode <T>{
 	 * @param content
 	 * @param next
 	 */
-	public MyNode(T content, MyNode<T> next) {
+	public Node(T content, Node<T> next) {
 		this.content = content;
 		this.next = next;
 	}
 
-	public MyNode<T> getNext() {
+	public Node<T> getNext() {
 		return this.next;
 	}
 
-	public void setNext(MyNode<T> no) {
+	public void setNext(Node<T> no) {
 		this.next = no;
 	}
 
