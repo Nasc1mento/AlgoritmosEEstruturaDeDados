@@ -97,5 +97,10 @@ public class ExcercisesMain {
 		System.out.println("---------Inverter uma lista usando os ponteiros-----------");
 		numeros.reverse();
 		System.out.println(numeros.list());
+		numeros.removeAt(9);
+		numeros.addLast(100);
+		System.out.println(numeros.list());
+		numeros.insertAt(1, 111);
+		System.out.println(numeros.list());
 	}
 }
