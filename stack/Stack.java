@@ -42,7 +42,7 @@ public class Stack<T> {
 		return this.tail.getData();
 	}
 
-	public String toString() {
+	public String state() {
 
 		String temp = "<";
 		if (head == null) {
