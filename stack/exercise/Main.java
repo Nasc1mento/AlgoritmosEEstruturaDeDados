@@ -48,15 +48,29 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
+import stack.Stack;
+
 public class Main {
 	public static void main(String[] args) {
+		Stack<String> pilha = new Stack<>();
 		try {
 			BufferedReader myreader = new BufferedReader(new FileReader("stack/exercise/input.txt"));
 			String line = myreader.readLine();
 			while (line != null) {
-				System.out.println(line);
+				String[] words = line.split(" ");
+				if(words.length > 1) {
+					pilha.push(words[1]);
+//					System.out.println(words[1]);
+				}else if (words[0].equals("STATE")) {
+					System.out.println(pilha.state());
+				}else if(words[0].equals("POP")) {
+					pilha.pop();
+				}else if(words[0].equals("RESET")){
+					pilha.reset();
+				}
 				line = myreader.readLine();
 			}
+//			System.out.println(pilha.state());
 			myreader.close();
 		} catch (IOException e) {
 			System.out.println("An error occurred.");
