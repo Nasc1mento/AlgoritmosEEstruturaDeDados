@@ -8,11 +8,11 @@ public class Main {
 		stack.push(30);
 		stack.push(40);
 		stack.push(50);
-		System.out.println(stack);
+		System.out.println(stack.state());
 		System.out.println(stack.peek());
 		stack.pop();
 		stack.pop();
-		System.out.println(stack);
+		System.out.println(stack.state());
 		System.out.println(stack.peek());
 	}
 }
