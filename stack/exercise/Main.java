@@ -58,19 +58,16 @@ public class Main {
 			String line = myreader.readLine();
 			while (line != null) {
 				String[] words = line.split(" ");
-				if(words.length > 1) {
+				if (words.length > 1)
 					pilha.push(words[1]);
-//					System.out.println(words[1]);
-				}else if (words[0].equals("STATE")) {
-					System.out.println(pilha.state());
-				}else if(words[0].equals("POP")) {
+				else if (words[0].equals("STATE"))
+					System.out.print(pilha.state());
+				else if (words[0].equals("POP"))
 					pilha.pop();
-				}else if(words[0].equals("RESET")){
+				else
 					pilha.reset();
-				}
 				line = myreader.readLine();
 			}
-//			System.out.println(pilha.state());
 			myreader.close();
 		} catch (IOException e) {
 			System.out.println("An error occurred.");

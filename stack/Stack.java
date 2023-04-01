@@ -15,8 +15,7 @@ public class Stack<T> {
 		if (head == null)
 			head = tail = new Node<T>(data);
 		else {
-			tail.setNext(new Node<T>(data));
-			tail = tail.getNext();
+			head = new Node<T>(head, data);
 		}
 	}
 
@@ -28,12 +27,7 @@ public class Stack<T> {
 		if (head == tail)
 			head = null;
 		else {
-			Node<T> temp = head;
-			while (temp.getNext() != tail) {
-				temp = temp.getNext();
-			}
-			tail = temp;
-			tail.setNext(null);
+			head = head.getNext();
 		}
 		return data;
 	}
@@ -42,19 +36,23 @@ public class Stack<T> {
 		return this.tail.getData();
 	}
 
+	public void reset() {
+		head = tail = null;
+	}
+
 	public String state() {
 
-		String temp = "<";
+		String temp = "";
 		if (head == null) {
-			temp += "Void ";
+			temp += "";
 			return temp;
 		}
 		Node<T> current = head;
 		while (current != null) {
-			temp += current.getData() + ", ";
+			temp += current.getData() + " ";
 			current = current.getNext();
 		}
-		temp += ">";
+		temp = temp.trim() + "\n";
 		return temp;
 	}
 }
