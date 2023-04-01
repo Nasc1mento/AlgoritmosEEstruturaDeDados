@@ -60,9 +60,9 @@ public class Main {
 				String[] words = line.split(" ");
 				if (words.length > 1)
 					pilha.push(words[1]);
-				else if (words[0].equals("STATE"))
-					System.out.print(pilha.state());
-				else if (words[0].equals("POP"))
+				else if (line.equals("STATE"))
+					System.out.println(pilha.state());
+				else if (line.equals("POP"))
 					pilha.pop();
 				else
 					pilha.reset();
@@ -70,7 +70,6 @@ public class Main {
 			}
 			myreader.close();
 		} catch (IOException e) {
-			System.out.println("An error occurred.");
 			e.printStackTrace();
 		}
 	}

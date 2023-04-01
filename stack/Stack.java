@@ -52,7 +52,7 @@ public class Stack<T> {
 			temp += current.getData() + " ";
 			current = current.getNext();
 		}
-		temp = temp.trim() + "\n";
-		return temp;
+		temp+="\n";
+		return temp.trim();
 	}
 }
