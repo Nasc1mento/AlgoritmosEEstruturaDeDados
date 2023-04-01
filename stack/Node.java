@@ -1,8 +1,8 @@
 package stack;
 /**
  * 
- * @author aluno.biblioteca
- *
+ * @author Adryan Nascimento Reis
+ * Nó da pilha
  * @param <T>
  */
 public class Node <T>{

@@ -1,8 +1,8 @@
 package queue;
 /**
  * 
- * @author aluno.biblioteca
- *
+ * @author Adryan Nascimento Reis
+ * Nó da fila
  * @param <T>
  */
 public class Node <T>{

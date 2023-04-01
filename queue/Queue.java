@@ -1,7 +1,12 @@
 package queue;
 
 
-
+/**
+ * 
+ * @author Adryan Nascimento Reis
+ * Fila feita com uma lista ligada
+ * @param <T>
+ */
 public class Queue<T> {
 
 	private Node<T> head;
@@ -10,7 +15,11 @@ public class Queue<T> {
 	public Queue() {
 		head = tail = null;
 	}
-
+	
+	/**
+	 * Adiciona no final da fila
+	 * @param data
+	 */
 	public void enqueue(T data) {
 		if (head == null)
 			head = tail = new Node<T>(data);
@@ -21,6 +30,10 @@ public class Queue<T> {
 		}
 	}
 	
+	/**
+	 * Remove o primeiro da fila
+	 * @return
+	 */
 	public T dequeue() {
 		if(head == null)
 			return null;
@@ -36,11 +49,17 @@ public class Queue<T> {
 		return temp;	
 	}
 	
+	/**
+	 * Retorna o primeiro elemento da fila
+	 * @return
+	 */
 	public T peek() {
 		return this.head.getData();
 	}
 	
-	
+	/**
+	 * (toString mas poderia ser outra coisa) Imprime o estado da fila
+	 */
 	public String toString() {
 
 		String temp = "<";

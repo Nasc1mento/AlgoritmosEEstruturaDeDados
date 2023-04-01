@@ -1,7 +1,12 @@
 package stack;
 
 import queue.Node;
-
+/**
+ * 
+ * @author Adryan Nascimento Reis
+ * Pilha feita com uma lista ligada
+ * @param <T>
+ */
 public class Stack<T> {
 
 	private Node<T> head;
@@ -10,7 +15,10 @@ public class Stack<T> {
 	public Stack() {
 		head = tail = null;
 	}
-
+	/**
+	 * Adiciona no topo da pilha
+	 * @param data
+	 */
 	public void push(T data) {
 		if (head == null)
 			head = tail = new Node<T>(data);
@@ -18,7 +26,10 @@ public class Stack<T> {
 			head = new Node<T>(head, data);
 		}
 	}
-
+	/**
+	 * Remove do topo da pilha
+	 * @return
+	 */
 	public T pop() {
 		if (head == null)
 			return null;
@@ -31,15 +42,26 @@ public class Stack<T> {
 		}
 		return data;
 	}
-
+	
+	/**
+	 * Retorna o elemento no topo da pilha
+	 * @return
+	 */
 	public T peek() {
-		return this.tail.getData();
+		return this.head.getData();
 	}
-
+	
+	/**
+	 * Reseta a pilha
+	 */
 	public void reset() {
 		head = tail = null;
 	}
-
+	
+	/**
+	 * Imprime o estado da pilha
+	 * @return
+	 */
 	public String state() {
 
 		String temp = "";
