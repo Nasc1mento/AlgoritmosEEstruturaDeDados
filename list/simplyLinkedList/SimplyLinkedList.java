@@ -478,4 +478,7 @@ public class SimplyLinkedList<T> {
 	public boolean isEmpty() {
 		return head == null;
 	}
+	
+	
+	
 }

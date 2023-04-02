@@ -62,18 +62,17 @@ public class Queue<T> {
 	 */
 	public String toString() {
 
-		String temp = "<";
+		String temp = "";
 		if (head == null) {
-			temp += "Void ";
+			temp += " ";
 			return temp;
 		}
 		Node<T> current = head;
 		while (current != null) {
-			temp += current.getData() + ", ";
+			temp += current.getData() + " ";
 			current = current.getNext();
 		}
-		temp += ">";
+		temp += "";
 		return temp;
 	}
-
 }

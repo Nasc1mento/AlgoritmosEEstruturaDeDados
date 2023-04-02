@@ -1,4 +1,4 @@
-package sort;
+package sort.bubble;
 
 public class BubbleSort {
 
@@ -14,8 +14,7 @@ public class BubbleSort {
 					sorted = false;
 				}
 			}
-		}
-				
+		}				
 		return arr;
 	}
 	
