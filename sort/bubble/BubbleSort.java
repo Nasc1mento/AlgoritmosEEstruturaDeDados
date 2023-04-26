@@ -29,7 +29,11 @@ import java.io.IOException;
  * 
  * Saída correspondente no console:
  * 
- * 4 6 0 7 8 4 0 6 7 8 0 4 6 7 8 2 1 3 1 2 3
+ * 4 6 0 7 8
+ * 4 0 6 7 8
+ * 0 4 6 7 8
+ * 2 1 3
+ * 1 2 3
  * 
  * 
  * 
@@ -102,6 +106,7 @@ public class BubbleSort {
 	}
 
 	public static void printArray(int[] arr) {
+		
 		for (int i = 0; i < arr.length; i++) {
 			System.out.print(arr[i]);
 			if (i < arr.length - 1) {
@@ -113,7 +118,7 @@ public class BubbleSort {
 
 	public static void main(String[] args) {
 		try {
-			BufferedReader myreader = new BufferedReader(new FileReader("sort/bubble/input10.txt"));
+			BufferedReader myreader = new BufferedReader(new FileReader("sort/bubble/input.txt"));
 			String line = myreader.readLine();
 			int[] array;
 			while (line != null) {
