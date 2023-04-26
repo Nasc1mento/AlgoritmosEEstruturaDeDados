@@ -72,37 +72,42 @@ public class BubbleSort {
 
 	public static int[] bubbleSort(int[] arr) {
 		boolean sorted = false;
-//		while(!sorted) {
-//			sorted = true;
-//			for (int i = 1; i < arr.length; i++) {
-//				if (arr[i] < arr[i-1]) {
-//					int temp = arr[i];
-//					arr[i] = arr[i-1];
-//					arr[i-1] = temp;
-//					sorted = false;
-//				}
-//			}
-//			if (!sorted)
-//				printArray(arr);
-//		}				
-//		return arr;
-
-		for (int i = 0; i < arr.length; i++) {
+		int i = 0;
+		int length = arr.length;
+		
+		while(!sorted && i < length ) {
 			sorted = true;
-			for (int j = 0; j < arr.length - i - 1; j++) {
+			for (int j = 0; j < length - i - 1; j++) {
 				if (arr[j] > arr[j+1]) {
 					int temp = arr[j];
 					arr[j] = arr[j+1];
 					arr[j+1] = temp;
 					sorted = false;
 				}
-					
 			}
+			i++;
+			
 			if (!sorted)
 				printArray(arr);
-		}
-		
+		}				
 		return arr;
+
+//		for (int i = 0; i < arr.length; i++) {
+//			sorted = true;
+//			for (int j = 0; j < arr.length - i - 1; j++) {
+//				if (arr[j] > arr[j+1]) {
+//					int temp = arr[j];
+//					arr[j] = arr[j+1];
+//					arr[j+1] = temp;
+//					sorted = false;
+//				}
+//					
+//			}
+//			if (!sorted)
+//				printArray(arr);
+//		}
+		
+//		return arr;
 	}
 
 	public static void printArray(int[] arr) {
