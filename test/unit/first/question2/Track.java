@@ -4,10 +4,8 @@ public class Track {
 
 	private Brick first;
 	private Brick last;
-	private int length;
 
 	public Track(int size) {
-		this.length = size;
 		for (int i = 1; i <= size; i++) {
 			addBrick(TypeBrick.getRandomBrick());
 		}
@@ -33,10 +31,6 @@ public class Track {
 		}
 	}
 
-	public int getlength() {
-		return this.length;
-	}
-	
 	public String state() {
 		String temp = "";
 		Brick current = first;
@@ -48,14 +42,7 @@ public class Track {
 		return temp;
 	}
 	
-	
 	public Brick getFirstBrick() {
 		return this.first;
-	}
-	
-	public Brick getLastBrick() {
-		return this.last;
-	}
-	
-	
+	}	
 }

@@ -17,7 +17,7 @@ public class Game {
 
 		Brick currentBrick = track.getFirstBrick();
 		Scanner scPlay = new Scanner(System.in);
-
+		System.out.println("d: walk | w: jump");
 		System.out.println(car.getCarEmoji());
 		System.out.println(track.state());
 
@@ -28,20 +28,23 @@ public class Game {
 				car.run();
 				currentBrick = currentBrick.getNext();
 				track.destroyBrick();
-			}
-
-			if (play.equals("w")) {
+			}else if (play.equals("w")) {
 				if (currentBrick.getNext() != null) {
 					car.jump();
 					currentBrick = currentBrick.getNext().getNext();
 					track.destroyBrick();
 					track.destroyBrick();
 				} else {
-					System.out.println("Porque tu queres fazer isso? Aperta d");
+					System.out.println("Press 'd' key");
 					continue;
 				}
 
+			}else {
+				System.out.println("d: walk | w: jump");
+				continue;
 			}
+
+			
 
 			if (currentBrick != null) {
 				if (currentBrick.getType() == TypeBrick.ENERGY)
@@ -66,11 +69,10 @@ public class Game {
 				track = new Track(SIZE_TRACK);
 				loop();
 			} else {
-				scPlay.close();
 				scLoose.close();
 				return;
 			}
-
+				
 		} else {
 			System.out.println("You win !!!");
 			System.out.println("Energy: " + car.energy() + ", Bombs: " + car.bombs() + ", Distance: " + car.distance());
@@ -81,11 +83,10 @@ public class Game {
 				track.expand(SIZE_TRACK);
 				loop();
 			} else {
-				scPlay.close();
 				scWinner.close();
 				return;
 			}
-
+			
 		}
 
 	}

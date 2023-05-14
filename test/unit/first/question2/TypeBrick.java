@@ -16,14 +16,6 @@ public enum TypeBrick {
 		return this.value;
 	}
 
-	public static TypeBrick getValueFromBrick(int value) {
-		for (TypeBrick type : values()) {
-			if (type.getValue() == value)
-				return type;
-		}
-		return null;
-	}
-
 	public static TypeBrick getRandomBrick() {
 		TypeBrick[] bricks = TypeBrick.values();
 		int index = new Random().nextInt(bricks.length);
