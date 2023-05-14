@@ -6,5 +6,6 @@ public class Main {
 				+ "para a avaliação da 1ª unidade de Algoritmos e Estrutura de Dados.\n"
 				+ "Alunos: Adryan Nascimento e Antônio Pedro");
 		new Game().loop();
+		System.out.println("Fim de jogo !!!");
 	}
 }

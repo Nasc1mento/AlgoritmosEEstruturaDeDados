@@ -3,59 +3,61 @@ package test.unit.first.question2;
 import java.util.Scanner;
 
 public class Game {
-	
+
 	public static final int SIZE_TRACK = 10;
 	private Track track;
 	private Car car;
-	
-	
-	
+
 	public Game() {
 		this.track = new Track(SIZE_TRACK);
 		this.car = new Car();
 	}
-	
-	public void loop()  {
-		
-		
+
+	public void loop() {
+
 		Brick currentBrick = track.getFirstBrick();
-		Scanner scanner = new Scanner(System.in);
-		
+		Scanner scPlay = new Scanner(System.in);
+
 		System.out.println(car.getCarEmoji());
 		System.out.println(track.state());
-		
-		while (car.state() != StateCar.EXPLODED && currentBrick != null) {		
-			String play = scanner.next();   
-		
+
+		while (car.state() != StateCar.EXPLODED && currentBrick != null) {
+			String play = scPlay.next();
+
 			if (play.equals("d")) {
 				car.run();
 				currentBrick = currentBrick.getNext();
 				track.destroyBrick();
-				System.out.println("cheguei aqui");
 			}
-			
+
 			if (play.equals("w")) {
-				car.jump();
-				currentBrick = currentBrick.getNext().getNext();
-				track.destroyBrick();
-				track.destroyBrick();
+				if (currentBrick.getNext() != null) {
+					car.jump();
+					currentBrick = currentBrick.getNext().getNext();
+					track.destroyBrick();
+					track.destroyBrick();
+				} else {
+					System.out.println("Porque tu queres fazer isso? Aperta d");
+					continue;
+				}
+
 			}
-			  
+
 			if (currentBrick != null) {
-				 if (currentBrick.getType() == TypeBrick.ENERGY)
-				    car.protect();
-				 if (currentBrick.getType() == TypeBrick.BOMB)
-				   car.explode();
+				if (currentBrick.getType() == TypeBrick.ENERGY)
+					car.protect();
+				if (currentBrick.getType() == TypeBrick.BOMB)
+					car.explode();
 			}
-			
-		    System.out.println(car.getCarEmoji());
-		    System.out.println(track.state());
-		    
+
+			System.out.println(car.getCarEmoji());
+			System.out.println(track.state());
+
 		}
-		
+
 		if (car.state() == StateCar.EXPLODED) {
 			System.out.println("Game over");
-			System.out.println("Energy: "+car.shields()+", Bombs: "+car.bombs()+ ", Distance: "+car.distance());
+			System.out.println("Energy: " + car.energy() + ", Bombs: " + car.bombs() + ", Distance: " + car.distance());
 			System.out.println("New Game? (y)yes or (*)no");
 			Scanner scLoose = new Scanner(System.in);
 			String choice = scLoose.next();
@@ -63,23 +65,28 @@ public class Game {
 				car = new Car();
 				track = new Track(SIZE_TRACK);
 				loop();
-			}else
-				System.exit(0);
-		}else {
+			} else {
+				scPlay.close();
+				scLoose.close();
+				return;
+			}
+
+		} else {
 			System.out.println("You win !!!");
-			System.out.println("Energy: "+car.shields()+", Bombs: "+car.bombs()+ ", Distance: "+car.distance());
+			System.out.println("Energy: " + car.energy() + ", Bombs: " + car.bombs() + ", Distance: " + car.distance());
 			System.out.println("Expand? (y)yes or (*)no");
 			Scanner scWinner = new Scanner(System.in);
 			String choice = scWinner.next();
 			if (choice.equals("y")) {
 				track.expand(SIZE_TRACK);
-				loop();				
-			}else
-				System.exit(0);
-						
+				loop();
+			} else {
+				scPlay.close();
+				scWinner.close();
+				return;
+			}
+
 		}
-		
-		
-		
+
 	}
 }

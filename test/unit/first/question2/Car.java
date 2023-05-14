@@ -44,7 +44,7 @@ public class Car {
 		energyCount++;
 	}
 	
-	public int shields() {
+	public int energy() {
 		return this.energyCount;
 	}
 	
