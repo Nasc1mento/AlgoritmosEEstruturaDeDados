@@ -4,19 +4,20 @@ public class Car {
 
 	private int distance;
 	private StateCar state;
-	private int shieldCount;
+	private int energyCount;
+	private int bombCount;
 	
 	public Car() {
 		this.distance = 0;
 		this.state = StateCar.NORMAL;
-		this.shieldCount = 0;
+		this.energyCount = 0;
+		this.bombCount = 0;
 	}
 	
 	public String getCarEmoji() {
 		
 		if (state == StateCar.EXPLODED)
 			return "💥";
-		
 		return "🏎";
 	}
 	
@@ -25,7 +26,9 @@ public class Car {
 	}
 	
 	public void explode() {
-		this.state = StateCar.EXPLODED;
+		bombCount++;
+		if (bombCount > energyCount)
+			this.state = StateCar.EXPLODED;
 	}
 	
 	public int distance() {
@@ -37,11 +40,16 @@ public class Car {
 	}
 	
 	public void protect() {
-		shieldCount++;
+		this.state = StateCar.PROTECTED;
+		energyCount++;
 	}
 	
 	public int shields() {
-		return this.shieldCount;
+		return this.energyCount;
+	}
+	
+	public void jump() {
+		distance+=2;
 	}
 	
 	
