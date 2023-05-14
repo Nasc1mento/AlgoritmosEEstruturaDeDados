@@ -52,5 +52,9 @@ public class Car {
 		distance+=2;
 	}
 	
+	public int bombs() {
+		return this.bombCount;
+	}
+	
 	
 }
