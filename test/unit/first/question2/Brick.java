@@ -12,6 +12,7 @@ public class Brick {
 	
 	public Brick(TypeBrick type) {
 		this.type = type;
+		this.next = null;
 	}
 	
 	

@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Game {
 
-	public static final int SIZE_TRACK = 10;
+	private static final int SIZE_TRACK = 10;
 	private Track track;
 	private Car car;
 
