@@ -22,6 +22,10 @@ public class Track {
 			last = last.getNext();
 		}
 	}
+	
+	public void destroyBrick() {
+		first = first.getNext();
+	}
 
 	public void expand(int size) {
 		for (int i = 1; i <= size; i++) {
