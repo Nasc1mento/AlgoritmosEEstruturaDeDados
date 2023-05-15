@@ -65,4 +65,10 @@ public class Client {
 	public Client getNext() {
 		return this.next;
 	}
+	
+	@Override
+	public String toString() {
+		return "Client [name=" + name + ", cpf=" + cpf + ", address=" + address + ", phoneNumber=" + phoneNumber
+				+ ", priority=" + priority + ", next=" + next + "]";
+	}
 }
