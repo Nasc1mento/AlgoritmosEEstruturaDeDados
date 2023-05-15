@@ -12,7 +12,7 @@ public class Queue {
 		this.departament = departament;
 	}
 	
-	public void enqueue() {
+	public void enqueue(Client client) {
 		
 	}
 	
