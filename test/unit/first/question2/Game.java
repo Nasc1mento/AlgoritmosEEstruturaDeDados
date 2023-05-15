@@ -17,7 +17,7 @@ public class Game {
 
 		Brick currentBrick = track.getFirstBrick();
 		Scanner scPlay = new Scanner(System.in);
-		System.out.println("d: walk | w: jump");
+		System.out.println("d: run | w: jump");
 		System.out.println(car.getCarEmoji());
 		System.out.println(track.state());
 
@@ -40,7 +40,7 @@ public class Game {
 				}
 
 			}else {
-				System.out.println("d: walk | w: jump");
+				System.out.println("d: run | w: jump");
 				continue;
 			}
 
