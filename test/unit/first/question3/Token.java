@@ -3,18 +3,15 @@ package test.unit.first.question3;
 public class Token {
 	
 	private Client client;
-	private Departaments departament;
+	private Funcionary funcionary;
 	
-	public Token(Client client) {
+	
+	public Token(Client client, Funcionary funcionary) {
 		this.client = client;
-		this.departament = Departaments.getRandomDepartament();
+		this.funcionary = funcionary;
 	}
 	
-	public Client getClient() {
-		return this.client;
-	}
-	
-	public Departaments getDepartament() {
-		return this.getDepartament();
+	public String toString() {
+		return "Client: "+client+", Funcionary: "+funcionary;
 	}
 }
