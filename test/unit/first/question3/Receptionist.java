@@ -6,8 +6,8 @@ public class Receptionist extends Funcionary {
 		super(name);
 	}
 	
-	public Token getToken(Client client) {
-		return new Token(client);
+	public Departaments redirect() {
+		return Departaments.getRandomDepartament();
 	}
 	
 	
