@@ -3,11 +3,11 @@ package test.unit.first.question3;
 public class Receptionist extends Funcionary {
 
 	public Receptionist(String name) {
-		super(name);
+		super(name, Departament.RECEPTION);
 	}
 	
-	public Departaments redirect() {
-		return Departaments.getRandomDepartament();
+	public Departament redirect() {
+		return Departament.getRandomDepartament();
 	}
 	
 	
