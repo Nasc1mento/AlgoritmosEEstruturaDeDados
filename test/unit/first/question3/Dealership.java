@@ -28,20 +28,20 @@ public class Dealership {
 		else if (departament == Departament.MECHANICAL_WORKSHOP)
 			queueMechanicalWorkshop.enqueue(client);
 	}
-	
+
 	public void serve(Departament departament) {
 		if (departament == Departament.ACCESSORIES)
 			System.out.println(new Token(attendantAcessories.serve(queueAccessories), attendantAcessories));
 		else if (departament == Departament.CAR_SALE)
 			System.out.println(new Token(attendantCarSale.serve(queueCarSale), attendantCarSale));
 		else if (departament == Departament.MECHANICAL_WORKSHOP)
-			System.out.println(new Token(attendantMechanicalWorkshop.serve(queueMechanicalWorkshop), attendantMechanicalWorkshop));
+			System.out.println(
+					new Token(attendantMechanicalWorkshop.serve(queueMechanicalWorkshop), attendantMechanicalWorkshop));
 	}
-	
-	
-	public static void main(String[] args) {
+
+	public void action() {
 		Dealership ds = new Dealership();
-		
+
 		Client client = new Client();
 		client.setName("NaoPCD");
 		client.setCpf("123456789011");
@@ -53,20 +53,23 @@ public class Dealership {
 		System.out.println(ds.queueMechanicalWorkshop);
 		System.out.println(ds.queueAccessories);
 		System.out.println(ds.queueCarSale);
-		
+
 		Client clientpcd = new Client();
 		clientpcd.setName("ClientPCD");
 		clientpcd.setCpf("123456789011");
 		clientpcd.setPhoneNumber("99 9999-9999");
 		clientpcd.setAddress("Mais perto que o IF");
 		clientpcd.setPriority(true);
-		
+
 		ds.enter(clientpcd, departament);
 		System.out.println(ds.queueMechanicalWorkshop);
 		System.out.println(ds.queueAccessories);
 		System.out.println(ds.queueCarSale);
-		
+
 		ds.serve(departament);
-		//Coloca pra printar denovo
+		// Coloca pra printar denovo
+		System.out.println(ds.queueMechanicalWorkshop);
+		System.out.println(ds.queueAccessories);
+		System.out.println(ds.queueCarSale);
 	}
 }
