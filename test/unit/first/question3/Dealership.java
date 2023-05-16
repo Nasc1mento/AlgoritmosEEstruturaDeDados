@@ -29,47 +29,46 @@ public class Dealership {
 			queueMechanicalWorkshop.enqueue(client);
 	}
 
-	public void serve(Departament departament) {
-		if (departament == Departament.ACCESSORIES)
-			System.out.println(new Token(attendantAcessories.serve(queueAccessories), attendantAcessories));
-		else if (departament == Departament.CAR_SALE)
-			System.out.println(new Token(attendantCarSale.serve(queueCarSale), attendantCarSale));
-		else if (departament == Departament.MECHANICAL_WORKSHOP)
-			System.out.println(
-					new Token(attendantMechanicalWorkshop.serve(queueMechanicalWorkshop), attendantMechanicalWorkshop));
+	public Token serve() {
+		
+		if (queueAccessories.size() > 0)
+			return new Token(attendantAcessories.serve(queueAccessories), attendantAcessories);
+		if (queueCarSale.size() > 0)
+			return new Token(attendantCarSale.serve(queueCarSale), attendantCarSale);
+		if (queueMechanicalWorkshop.size() > 0)
+			return new Token(attendantMechanicalWorkshop.serve(queueMechanicalWorkshop), attendantMechanicalWorkshop);
+		
+		return null;		
 	}
 
 	public void action() {
-		Dealership ds = new Dealership();
 
-		Client client = new Client();
-		client.setName("NaoPCD");
-		client.setCpf("123456789011");
-		client.setPhoneNumber("99 9999-9999");
-		client.setAddress("Mais perto que o IF");
-		client.setPriority(false);
-		Departament departament = ds.receptionist.redirect();
-		ds.enter(client, departament);
-		System.out.println(ds.queueMechanicalWorkshop);
-		System.out.println(ds.queueAccessories);
-		System.out.println(ds.queueCarSale);
+		this.load();
+		this.state();
+		while (true) {
+			Token token = serve();
+			if (token == null)
+				break;
+			System.out.println("TV: "+token);
+		}
+		state();
 
-		Client clientpcd = new Client();
-		clientpcd.setName("ClientPCD");
-		clientpcd.setCpf("123456789011");
-		clientpcd.setPhoneNumber("99 9999-9999");
-		clientpcd.setAddress("Mais perto que o IF");
-		clientpcd.setPriority(true);
+	}
 
-		ds.enter(clientpcd, departament);
-		System.out.println(ds.queueMechanicalWorkshop);
-		System.out.println(ds.queueAccessories);
-		System.out.println(ds.queueCarSale);
+	public void load() {
+		for (int i = 1; i <= 10; i++) {
+			Client client = new Client();
+			client.setName("Pessoa" + i);
+			client.setCpf(i + "" + i + "" + i);
+			client.setPhoneNumber(i + "" + i + "" + i);
+			client.setPriority(i %2 == 0);
+			this.enter(client, this.receptionist.redirect());
+		}
+	}
 
-		ds.serve(departament);
-		// Coloca pra printar denovo
-		System.out.println(ds.queueMechanicalWorkshop);
-		System.out.println(ds.queueAccessories);
-		System.out.println(ds.queueCarSale);
+	public void state() {
+		System.out.println(this.queueMechanicalWorkshop);
+		System.out.println(this.queueAccessories);
+		System.out.println(this.queueCarSale);
 	}
 }

@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Game {
 
-	private static final int SIZE_TRACK = 10;
+	private final int SIZE_TRACK = 10;
 	private Track track;
 	private Car car;
 
@@ -16,13 +16,13 @@ public class Game {
 	public void loop() {
 
 		Brick currentBrick = track.getFirstBrick();
-		Scanner scPlay = new Scanner(System.in);
+		Scanner scanner = new Scanner(System.in);
 		System.out.println("d: run | w: jump");
 		System.out.println(car.getCarEmoji());
 		System.out.println(track.state());
 
 		while (car.state() != StateCar.EXPLODED && currentBrick != null) {
-			String play = scPlay.next();
+			String play = scanner.next();
 
 			if (play.equals("d")) {
 				car.run();
@@ -62,14 +62,13 @@ public class Game {
 			System.out.println("Game over");
 			System.out.println("Energy: " + car.energy() + ", Bombs: " + car.bombs() + ", Distance: " + car.distance());
 			System.out.println("New Game? (y)yes or (*)no");
-			Scanner scLoose = new Scanner(System.in);
-			String choice = scLoose.next();
+			String choice = scanner.next();
 			if (choice.equals("y")) {
 				car = new Car();
 				track = new Track(SIZE_TRACK);
 				loop();
 			} else {
-				scLoose.close();
+				scanner.close();
 				return;
 			}
 				
@@ -77,13 +76,12 @@ public class Game {
 			System.out.println("You win !!!");
 			System.out.println("Energy: " + car.energy() + ", Bombs: " + car.bombs() + ", Distance: " + car.distance());
 			System.out.println("Expand? (y)yes or (*)no");
-			Scanner scWinner = new Scanner(System.in);
-			String choice = scWinner.next();
+			String choice = scanner.next();
 			if (choice.equals("y")) {
 				track.expand(SIZE_TRACK);
 				loop();
 			} else {
-				scWinner.close();
+				scanner.close();
 				return;
 			}
 			
