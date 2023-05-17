@@ -1,23 +1,26 @@
 package test.unit.first.question3;
 
+
 public class Dealership {
 
-	private Queue queueCarSale;
-	private Queue queueMechanicalWorkshop;
-	private Queue queueAccessories;
+	private QueueClients queueCarSale;
+	private QueueClients queueMechanicalWorkshop;
+	private QueueClients queueAccessories;
 	private Receptionist receptionist;
 	private Attendant attendantCarSale;
 	private Attendant attendantMechanicalWorkshop;
 	private Attendant attendantAcessories;
 
+
 	public Dealership() {
-		this.queueCarSale = new Queue(Departament.CAR_SALE);
-		this.queueMechanicalWorkshop = new Queue(Departament.MECHANICAL_WORKSHOP);
-		this.queueAccessories = new Queue(Departament.ACCESSORIES);
+		this.queueCarSale = new QueueClients(Departament.CAR_SALE);
+		this.queueMechanicalWorkshop = new QueueClients(Departament.MECHANICAL_WORKSHOP);
+		this.queueAccessories = new QueueClients(Departament.ACCESSORIES);
 		this.receptionist = new Receptionist("Fulano da Recepcao");
 		this.attendantAcessories = new Attendant("Fulano Atendente Acessorios", Departament.ACCESSORIES);
 		this.attendantCarSale = new Attendant("Fulano Atendente Carros", Departament.CAR_SALE);
 		this.attendantMechanicalWorkshop = new Attendant("Fulano Atendente Mecanico", Departament.MECHANICAL_WORKSHOP);
+
 	}
 
 	public void enter(Client client, Departament departament) {
@@ -29,16 +32,25 @@ public class Dealership {
 			queueMechanicalWorkshop.enqueue(client);
 	}
 
-	public Token serve() {
+	public boolean tv() {
+		int count = 0;
 		
-		if (queueAccessories.size() > 0)
-			return new Token(attendantAcessories.serve(queueAccessories), attendantAcessories);
-		if (queueCarSale.size() > 0)
-			return new Token(attendantCarSale.serve(queueCarSale), attendantCarSale);
-		if (queueMechanicalWorkshop.size() > 0)
-			return new Token(attendantMechanicalWorkshop.serve(queueMechanicalWorkshop), attendantMechanicalWorkshop);
-		
-		return null;		
+		if (queueAccessories.size() > 0) {
+			System.out.println("TV: "+new Token(attendantAcessories.serve(queueAccessories), attendantAcessories));
+			count++;
+		}
+			
+		if (queueCarSale.size() > 0) {
+			System.out.println("TV: "+new Token(attendantCarSale.serve(queueCarSale), attendantCarSale));
+			count++;
+		}
+			
+		if (queueMechanicalWorkshop.size() > 0) {
+			System.out.println("TV: "+new Token(attendantMechanicalWorkshop.serve(queueMechanicalWorkshop), attendantMechanicalWorkshop));
+			count++;
+		}
+			
+		return count > 0;
 	}
 
 	public void action() {
@@ -46,12 +58,13 @@ public class Dealership {
 		this.load();
 		this.state();
 		while (true) {
-			Token token = serve();
-			if (token == null)
+			System.out.println("------------------------------------------------------------------------");
+			boolean tv = tv();
+			System.out.println("------------------------------------------------------------------------");
+			if (!tv)
 				break;
-			System.out.println("TV: "+token);
+			state();
 		}
-		state();
 
 	}
 
@@ -61,7 +74,7 @@ public class Dealership {
 			client.setName("Pessoa" + i);
 			client.setCpf(i + "" + i + "" + i);
 			client.setPhoneNumber(i + "" + i + "" + i);
-			client.setPriority(i %2 == 0);
+			client.setPriority(i % 2 == 0);
 			this.enter(client, this.receptionist.redirect());
 		}
 	}

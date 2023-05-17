@@ -6,7 +6,7 @@ public class Attendant extends Funcionary{
 		super(name, departament);
 	}
 	
-	public Client serve(Queue queue) {
+	public Client serve(QueueClients queue) {
 		return queue.dequeue();
 	}
 }

@@ -1,13 +1,13 @@
 package test.unit.first.question3;
 
-public class Queue {
+public class QueueClients {
 
 	private Client first;
 	private Client end;
 	private Departament departament;
 	private int size;
 
-	public Queue(Departament departament) {
+	public QueueClients(Departament departament) {
 		first = end = null;
 		this.departament = departament;
 	}
