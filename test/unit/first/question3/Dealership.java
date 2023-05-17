@@ -58,7 +58,6 @@ public class Dealership {
 
 		this.load();
 		this.state();
-		boolean flag = true;
 		while (true) {
 			System.out.println("------------------------------------------------------------------------");
 			boolean tv = tv();
@@ -67,11 +66,14 @@ public class Dealership {
 				break;			
 			state();
 		}
+		
+		// Caso queira ver os registrados
+		// System.out.println(this.registeredClients);
 
 	}
 
 	public void load() {
-		for (int i = 1; i <= 10; i++) {
+		for (int i = 1; i <= 100; i++) {
 			Client client = new Client();
 			client.setName("Pessoa" + i);
 			client.setCpf(i + "" + i + "" + i);
