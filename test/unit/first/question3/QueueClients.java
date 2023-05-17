@@ -4,12 +4,11 @@ public class QueueClients {
 
 	private Client first;
 	private Client end;
-	private Departament departament;
 	private int size;
 
-	public QueueClients(Departament departament) {
+	public QueueClients() {
 		first = end = null;
-		this.departament = departament;
+		this.size = 0;
 	}
 
 	public void enqueue(Client client) {
@@ -57,9 +56,24 @@ public class QueueClients {
 	public int size() {
 		return this.size;
 	}
+	
+	public boolean contains(Client client) {
+		if (isEmpty())
+			return false;
+		
+		Client temp = first;
+		
+		while (temp != null) {
+			if (temp.equals(client))
+				return true;
+			temp = temp.getNext();
+		}
+		
+		return false;
+	}
 
 	public String toString() {
-		String temp = this.departament + ":[";
+		String temp = "[";
 		if (isEmpty()) {
 			temp += "]";
 			return temp;
@@ -76,9 +90,4 @@ public class QueueClients {
 	public boolean isEmpty() {
 		return this.first == null;
 	}
-
-	public Departament getDepartament() {
-		return this.departament;
-	}
-
 }

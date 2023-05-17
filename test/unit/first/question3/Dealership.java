@@ -10,17 +10,18 @@ public class Dealership {
 	private Attendant attendantCarSale;
 	private Attendant attendantMechanicalWorkshop;
 	private Attendant attendantAcessories;
+	private QueueClients registeredClients;
 
 
 	public Dealership() {
-		this.queueCarSale = new QueueClients(Departament.CAR_SALE);
-		this.queueMechanicalWorkshop = new QueueClients(Departament.MECHANICAL_WORKSHOP);
-		this.queueAccessories = new QueueClients(Departament.ACCESSORIES);
+		this.queueCarSale = new QueueClients();
+		this.queueMechanicalWorkshop = new QueueClients();
+		this.queueAccessories = new QueueClients();
 		this.receptionist = new Receptionist("Fulano da Recepcao");
 		this.attendantAcessories = new Attendant("Fulano Atendente Acessorios", Departament.ACCESSORIES);
 		this.attendantCarSale = new Attendant("Fulano Atendente Carros", Departament.CAR_SALE);
 		this.attendantMechanicalWorkshop = new Attendant("Fulano Atendente Mecanico", Departament.MECHANICAL_WORKSHOP);
-
+		this.registeredClients = new QueueClients();
 	}
 
 	public void enter(Client client, Departament departament) {
@@ -35,18 +36,18 @@ public class Dealership {
 	public boolean tv() {
 		int count = 0;
 		
-		if (queueAccessories.size() > 0) {
-			System.out.println("TV: "+new Token(attendantAcessories.serve(queueAccessories), attendantAcessories));
+		if (!queueAccessories.isEmpty()) {
+			System.out.println("TV: "+ new Token(attendantAcessories.serve(queueAccessories), attendantAcessories));
 			count++;
 		}
 			
-		if (queueCarSale.size() > 0) {
-			System.out.println("TV: "+new Token(attendantCarSale.serve(queueCarSale), attendantCarSale));
+		if (!queueCarSale.isEmpty()) {
+			System.out.println("TV: "+ new Token(attendantCarSale.serve(queueCarSale), attendantCarSale));
 			count++;
 		}
 			
-		if (queueMechanicalWorkshop.size() > 0) {
-			System.out.println("TV: "+new Token(attendantMechanicalWorkshop.serve(queueMechanicalWorkshop), attendantMechanicalWorkshop));
+		if (!queueMechanicalWorkshop.isEmpty()) {
+			System.out.println("TV: "+ new Token(attendantMechanicalWorkshop.serve(queueMechanicalWorkshop), attendantMechanicalWorkshop));
 			count++;
 		}
 			
@@ -57,12 +58,13 @@ public class Dealership {
 
 		this.load();
 		this.state();
+		boolean flag = true;
 		while (true) {
 			System.out.println("------------------------------------------------------------------------");
 			boolean tv = tv();
 			System.out.println("------------------------------------------------------------------------");
 			if (!tv)
-				break;
+				break;			
 			state();
 		}
 
@@ -75,7 +77,13 @@ public class Dealership {
 			client.setCpf(i + "" + i + "" + i);
 			client.setPhoneNumber(i + "" + i + "" + i);
 			client.setPriority(i % 2 == 0);
-			this.enter(client, this.receptionist.redirect());
+			if(!registeredClients.contains(client)) {
+				this.enter(client, this.receptionist.redirect());
+				this.registeredClients.enqueue(client);
+			}else {
+				System.out.println("Cliente já registrado no sistema");
+			}
+			
 		}
 	}
 
