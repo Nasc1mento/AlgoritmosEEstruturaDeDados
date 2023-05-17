@@ -27,8 +27,12 @@ public class Car {
 	
 	public void explode() {
 		bombCount++;
-		if (bombCount > energyCount)
+		if (bombCount > energyCount) {
 			this.state = StateCar.EXPLODED;
+			return;
+		}
+		if (bombCount == energyCount)
+			this.state = StateCar.PROTECTED;
 	}
 	
 	public int distance() {
