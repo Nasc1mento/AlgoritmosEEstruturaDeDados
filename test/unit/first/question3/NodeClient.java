@@ -1,108 +1,30 @@
 package test.unit.first.question3;
 
-public class QueueClients {
+public class NodeClient {
 
-	private NodeClient first;
-	private NodeClient end;
-	private int size;
+	private NodeClient next;
+	private Client client;
 
-	public QueueClients() {
-		first = end = null;
-		this.size = 0;
+	public NodeClient(NodeClient next, Client client) {
+		this.next = next;
+		this.client = client;
 	}
 
-	public void enqueue(Client client) {
-
-		if (isEmpty()) {
-			first = end = new NodeClient(client);
-			size++;
-			return;
-		}
-
-		if (client.isPriority()) {
-//			first = new NodeClient(first, client);
-//			size++;
-			
-			NodeClient current = first;
-			NodeClient previous = null;
-			
-			while (current != null && current.getClient().isPriority()) {
-				previous = current;
-				current = current.getNext();
-			}
-			
-			
-			NodeClient newClient = new NodeClient(current, client);
-			if (previous == null) {
-				first = newClient;
-			}else {
-				previous.setNext(newClient);
-			}
-			
-		} else {
-			end.setNext(new NodeClient(client));
-			size++;
-		}
+	public NodeClient(Client client) {
+		this.next = null;
+		this.client = client;
 	}
 
-	public Client dequeue() {
-
-		if (isEmpty())
-			return null;
-
-		NodeClient temp = first;
-
-		if (first == end) {
-			first = end = null;
-			size--;
-			return temp.getClient();
-		}
-
-		first = first.getNext();
-		size--;
-		return temp.getClient();
-
+	public NodeClient getNext() {
+		return next;
 	}
 
-	public Client peek() {
-		return this.first.getClient();
+	public void setNext(NodeClient next) {
+		this.next = next;
 	}
 
-	public int size() {
-		return this.size;
-	}
-	
-	public boolean contains(Client client) {
-		if (isEmpty())
-			return false;
-		
-		NodeClient temp = first;
-		
-		while (temp != null) {
-			if (temp.getClient().equals(client))
-				return true;
-			temp = temp.getNext();
-		}
-		
-		return false;
+	public Client getClient() {
+		return client;
 	}
 
-	public String toString() {
-		String temp = "[";
-		if (isEmpty()) {
-			temp += "]";
-			return temp;
-		}
-		Client aux = first.getClient();
-		while (aux != null) {
-			temp += aux + ", ";
-			aux = aux.getNext();
-		}
-		temp += "]";
-		return temp;
-	}
-
-	public boolean isEmpty() {
-		return this.first == null;
-	}
 }
