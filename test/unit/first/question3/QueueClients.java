@@ -20,8 +20,26 @@ public class QueueClients {
 		}
 
 		if (client.isPriority()) {
-			first = new NodeClient(first, client );
+//			first = new NodeClient(first, client );
+//			size++;
+			
+			NodeClient current = first;
+			NodeClient previous = null;
+			
+			while (current != null && current.getClient().isPriority()) {
+				previous = current;
+				current = current.getNext();
+			}
+			
+			
+			NodeClient newNode = new NodeClient(current, client);
+			if (previous == null)
+				first = newNode;
+			else
+				previous.setNext(newNode);
+			
 			size++;
+			
 		} else {
 			end.setNext(new NodeClient(client));
 			end = end.getNext();
