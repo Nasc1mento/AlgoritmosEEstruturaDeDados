@@ -2,8 +2,8 @@ package test.unit.first.question3;
 
 public class QueueClients {
 
-	private Client first;
-	private Client end;
+	private NodeClient first;
+	private NodeClient end;
 	private int size;
 
 	public QueueClients() {
@@ -14,18 +14,17 @@ public class QueueClients {
 	public void enqueue(Client client) {
 
 		if (isEmpty()) {
-			first = end = client;
+			first = end = new NodeClient(client);
 			size++;
 			return;
 		}
 
 		if (client.isPriority()) {
-			client.setNext(first);
-			first = client;
+			first = new NodeClient(first, client );
 			size++;
 		} else {
-			end.setNext(client);
-			end = client;
+			end.setNext(new NodeClient(client));
+			end = end.getNext();
 			size++;
 		}
 	}
@@ -35,22 +34,22 @@ public class QueueClients {
 		if (isEmpty())
 			return null;
 
-		Client temp = first;
+		NodeClient temp = first;
 
 		if (first == end) {
 			first = end = null;
 			size--;
-			return temp;
+			return temp.getClient();
 		}
 
 		first = first.getNext();
 		size--;
-		return temp;
+		return temp.getClient();
 
 	}
 
 	public Client peek() {
-		return this.first;
+		return this.first.getClient();
 	}
 
 	public int size() {
@@ -61,10 +60,10 @@ public class QueueClients {
 		if (isEmpty())
 			return false;
 		
-		Client temp = first;
+		NodeClient temp = first;
 		
 		while (temp != null) {
-			if (temp.equals(client))
+			if (temp.getClient().equals(client))
 				return true;
 			temp = temp.getNext();
 		}
@@ -78,9 +77,9 @@ public class QueueClients {
 			temp += "]";
 			return temp;
 		}
-		Client aux = first;
+		NodeClient aux = first;
 		while (aux != null) {
-			temp += aux + ", ";
+			temp += aux.getClient() + ", ";
 			aux = aux.getNext();
 		}
 		temp += "]";
