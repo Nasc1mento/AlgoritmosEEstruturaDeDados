@@ -59,14 +59,6 @@ public class Client {
 	public void setPriority(boolean priority) {
 		this.priority = priority;
 	}
-
-	public void setNext(Client next) {
-		this.next = next;
-	}
-	
-	public Client getNext() {
-		return this.next;
-	}
 	
 	@Override
 	public String toString() {
