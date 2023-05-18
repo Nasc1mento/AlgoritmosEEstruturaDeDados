@@ -18,6 +18,8 @@ public class Car {
 		
 		if (state == StateCar.EXPLODED)
 			return "💥";
+		if (state == StateCar.PROTECTED)
+			return "🛡️";
 		return "🏎";
 	}
 	
@@ -31,8 +33,13 @@ public class Car {
 			this.state = StateCar.EXPLODED;
 			return;
 		}
-		if (bombCount == energyCount)
+		
+		if (bombCount < energyCount) {
 			this.state = StateCar.PROTECTED;
+			return;
+		}
+		
+		this.state = StateCar.NORMAL;
 	}
 	
 	public int distance() {
