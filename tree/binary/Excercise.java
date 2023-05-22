@@ -1,5 +1,7 @@
 package tree.binary;
 
+import javax.swing.JOptionPane;
+
 /**
  * @Professor Milton Secundino
  * @Exercicio Implementação de Lista Ligada para a disciplina de Algorítmos e
@@ -37,19 +39,23 @@ package tree.binary;
  *
  */
 public class Excercise {
-	public static void main(String[] args) {
-		Tree<Integer> tree = new Tree<Integer>();
-		tree.insert(20);
-		tree.insert(15);
-		tree.insert(18);
-		tree.insert(25);
-		tree.insert(60);
-		tree.insert(-4);
-//		tree.print();
-		System.out.println(tree.search(18));
-		System.out.println(tree.search(75));
-		tree.reset();
-		tree.insert(60);
-		System.out.println(tree.search(7));		
+	public static void main(String[] args) throws DuplicateValueException{
+		Tree<Integer> tree = new Tree<>();
+		try {
+			tree.insert(20);
+			tree.insert(15);
+			tree.insert(18);
+			tree.insert(25);
+			tree.insert(60);
+			tree.insert(-4);
+//			tree.print();
+			System.out.println(tree.search(18));
+			System.out.println(tree.search(75));
+			tree.reset();
+			tree.insert(60);
+			System.out.println(tree.search(7));		
+		}catch (DuplicateValueException e) {
+			e.printStackTrace();
+		}
 	}
 }
