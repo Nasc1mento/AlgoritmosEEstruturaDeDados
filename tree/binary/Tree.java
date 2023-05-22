@@ -45,7 +45,7 @@ public class Tree<T extends Comparable<T>> {
 		if (node == null)
 			return new Node<T>(value);
 		
-		if (this.root.getValue() == value)
+		if (node.getValue() == value)
 			throw new DuplicateValueException("Duplicate value");
 
 		if (value.compareTo(node.getValue()) < 0)
