@@ -13,6 +13,10 @@ public class Tree<T extends Comparable<T>> {
 	}
 
 	public Node<T> insert(T value) {
+		
+		if (this.root == null)
+			return root = new Node<T>(value);
+		
 		return insert(this.root, value);
 	}
 
@@ -37,11 +41,6 @@ public class Tree<T extends Comparable<T>> {
 	}
 
 	private Node<T> insert(Node<T> node, T value) {
-		
-		if (root == null) {
-			this.root = new Node<T>(value);
-			return root;
-		}
 		
 		if (node == null)
 			return new Node<T>(value);
