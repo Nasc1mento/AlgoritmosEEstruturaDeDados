@@ -10,14 +10,9 @@ public class Client {
 	private String address;
 	private String phoneNumber;
 	private boolean priority;
-	private Client next;
 	
 	public Client() {
-		this.next = null;
-	}
-	
-	public Client(Client next) {
-		this.next = next;
+		
 	}
 
 	public String getName() {

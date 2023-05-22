@@ -13,7 +13,7 @@ public class Node <T> {
 	}
 
 	public Node<T> getLeft() {
-		return left;
+		return this.left;
 	}
 
 	public void setLeft(Node<T> left) {
@@ -21,7 +21,7 @@ public class Node <T> {
 	}
 
 	public Node<T> getRight() {
-		return right;
+		return this.right;
 	}
 
 	public void setRight(Node<T> right) {
@@ -29,7 +29,7 @@ public class Node <T> {
 	}
 
 	public T getValue() {
-		return value;
+		return this.value;
 	}
 	
 	
