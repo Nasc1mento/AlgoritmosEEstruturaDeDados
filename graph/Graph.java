@@ -57,7 +57,11 @@ public class Graph <T>{
 	    graph.addEdge("Alice", "Maria");
 	    graph.addEdge("Rob", "Maria");
 	    
-	    Vertex<String> v =  (Vertex<String>) graph.getAdjVertices().get(new Vertex<String>("Bob")).getTail().getValue();
-	    System.out.println(v.getLabel());
+	   graph.getAdjVertices().get(new Vertex<String>("Bob")).print();
+	   graph.getAdjVertices().get(new Vertex<String>("Alice")).print();
+	   graph.getAdjVertices().get(new Vertex<String>("Mark")).print();
+	   graph.getAdjVertices().get(new Vertex<String>("Rob")).print();
+	   graph.getAdjVertices().get(new Vertex<String>("Maria")).print();
+	    
 	}
 }

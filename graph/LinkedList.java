@@ -89,6 +89,18 @@ public class LinkedList<T> {
 		return null;
 	}
 	
+	public void print() {
+	    Node<T> temp = head;
+
+	    while (temp != null) {
+	        System.out.print(temp.getValue() + " ");
+	        temp = temp.getNext();
+	    }
+
+	    System.out.println();
+	}
+	
+	
 	public void clear() {
 		this.head = tail = null;
 	}

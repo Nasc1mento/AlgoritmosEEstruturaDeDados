@@ -19,6 +19,11 @@ public class Vertex<T> {
 	}
 
 	@Override
+	public String toString() {
+		return "Vertex [label=" + label + "]";
+	}
+
+	@Override
 	public int hashCode() {
 		return Objects.hash(label);
 	}
