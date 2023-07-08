@@ -1,6 +1,6 @@
 package graph;
 
-public class Map<K, V>{
+public class Map<K, V extends Object>{
 	
 	private LinkedList<Entry<K, LinkedList<V>>> buckets;
 		
@@ -42,7 +42,9 @@ public class Map<K, V>{
 		
 		while (temp != null) {
 			if (temp.getValue().getKey().equals(key)) {
-				return temp.getValue().getValue();
+				LinkedList<V> removeList = temp.getValue().getValue();
+				temp.getValue().getValue().clear();
+				return removeList;
 			}
 			temp = temp.getNext();
 		}		
