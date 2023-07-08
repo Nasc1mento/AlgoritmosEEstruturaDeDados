@@ -21,14 +21,13 @@ public class LinkedList<T> {
 		if (isEmpty())
 			this.head = tail = new Node<>(value);
 		
-		Node<T> newNode = new Node<T>(value, null, head);
-		this.head.setPrevious(newNode);
-		this.head = newNode;
-		
+		this.head.setPrevious(new Node<T>(value, null, head));
+		this.head = head.getPrevious();	
 	}
 	
 	public T removeFirst() {
 		T t = head.getValue();
+		
 		if (isEmpty()) {
 			this.head = tail = null;
 			return t;
@@ -41,6 +40,7 @@ public class LinkedList<T> {
 	
 	public T removeLast() {
 		T t = head.getValue();
+		
 		if (isEmpty()) {
 			this.head = tail = null;
 			return t;
@@ -49,11 +49,11 @@ public class LinkedList<T> {
 		this.tail.getPrevious().setNext(tail.getNext());
 		this.tail = tail.getPrevious();
 		
-		return t;
-		
+		return t;		
 	}
 	
 	public boolean isEmpty() {
 		return this.head == null;
 	}
+	
 }
