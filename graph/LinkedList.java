@@ -9,6 +9,14 @@ public class LinkedList<T> {
 		this.head = this.tail = null;
 	}
 	
+	public Node<T> getHead() {
+		return this.head;
+	}
+	
+	public Node<T> getTail() {
+		return this.tail;
+	}
+	
 	public void addLast(T value) {
 		if (isEmpty())
 			this.head = tail = new Node<>(value);
@@ -50,6 +58,22 @@ public class LinkedList<T> {
 		this.tail = tail.getPrevious();
 		
 		return t;		
+	}
+	
+	public Node<T> get(T value) {
+		Node<T> temp = this.head;
+		
+		while (temp != null) {
+			if (temp.getValue() == value)
+				return temp;
+			temp = temp.getNext();
+		}
+		
+		return null;
+	}
+	
+	public void clear() {
+		this.head = tail = null;
 	}
 	
 	public boolean isEmpty() {

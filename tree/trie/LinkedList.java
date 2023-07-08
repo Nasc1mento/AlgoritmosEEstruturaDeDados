@@ -22,6 +22,7 @@ public class LinkedList <T>{
     public NodeLL<T> getHead() {
         return this.head;
     }
+    
     public boolean isEmpty() {
         return this.head == null;
     }

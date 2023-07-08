@@ -1,5 +1,7 @@
 package graph;
 
+import java.util.Objects;
+
 public class Entry <K, V> {
 	
 	private K key;
@@ -20,6 +22,28 @@ public class Entry <K, V> {
 	
 	public V getValue() {
 		return this.value;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(key, value);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Entry<?, ?> other = (Entry<?, ?>) obj;
+		return Objects.equals(key, other.key) && Objects.equals(value, other.value);
+	}
+
+	@Override
+	public String toString() {
+		return "Entry [key=" + key + ", value=" + value + "]";
 	}
 	
 }

@@ -1,5 +1,7 @@
 package graph;
 
+import java.util.Objects;
+
 public class Node <T> {
 		
 	private T value;
@@ -38,4 +40,27 @@ public class Node <T> {
 		return this.value;
 	}
 
+	@Override
+	public int hashCode() {
+		return Objects.hash(next, previous, value);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		
+		Node<?> other = (Node<?>) obj;
+		return Objects.equals(value, other.value);
+	}
+
+	@Override
+	public String toString() {
+		return "Node [value=" + value + ", next=" + next + ", previous=" + previous + "]";
+	}
+	
 }
